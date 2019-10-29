@@ -1,4 +1,7 @@
+import { Bono } from './../../models/bono.model';
 import { Component, OnInit } from '@angular/core';
+import { BonoService } from 'src/app/services/bono.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-initial',
@@ -8,22 +11,26 @@ import { Component, OnInit } from '@angular/core';
 export class InitialComponent implements OnInit {
 
   checked: boolean = false;
+  bonoSelected: Bono;
   listOfBonos: any[] = [
-    {bonoPrepago: "Minutos ilimitados", selected:false},
-    {bonoPrepago: "1GB de datos",selected:false },
-    {bonoPrepago: "Minutos ilimitados", selected:false},
-    {bonoPrepago: "1GB de datos",selected:false },
-    {bonoPrepago: "Minutos ilimitados", selected:false},
-    {bonoPrepago: "1GB de datos",selected:false },
+    {bonoPrepago: "Minutos ilimitados", type:'call', selected:false},
+    {bonoPrepago: "1GB de datos",type:'internet', selected:false },
   ]
 
-  constructor() { }
+  constructor(
+    private bonoService: BonoService,
+    private route: Router
+
+  ) { }
 
   ngOnInit() {
   }
 
   public selectedBono(index: number): void{
     this.checked = true;
+    this.bonoSelected.name = this.listOfBonos[index].bonoPrepago;
+    this.bonoSelected.type = this.listOfBonos[index].type;
+
     for(let i = 0; i < this.listOfBonos.length; i++){
       if(i == index){
         this.listOfBonos[index].selected = true;
@@ -35,13 +42,20 @@ export class InitialComponent implements OnInit {
     console.log(this.listOfBonos[index]);
   }
 
+  // change button clases
   public buttonClases(){
-
     if(this.checked){
       return ['tdp-button'];
     }else{
       return ['tdp-button-opaque'];
     }
+  }
+
+  //Set data of bonus selected
+  public sendData():void{
+    this.bonoService.setBono(this.bonoSelected);
+    this.route.navigate(['/canje']);
+
   }
 
 }
