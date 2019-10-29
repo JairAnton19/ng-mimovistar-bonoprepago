@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { InitialComponent } from './Components/initial/initial.component';
 import { CanjedBonusComponent } from './Components/canjed-bonus/canjed-bonus.component';
 import { BonoDetailComponent } from './Components/bono-detail/bono-detail.component';
+import { ErrorComponent } from './Components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InitialComponent,
     CanjedBonusComponent,
-    BonoDetailComponent
+    BonoDetailComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

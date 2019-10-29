@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class InitialComponent implements OnInit {
 
   checked: boolean = false;
-  bonoSelected: Bono;
+  bonoSelected: Bono = new Bono;
   listOfBonos: any[] = [
     {bonoPrepago: "Minutos ilimitados", type:'call', selected:false},
     {bonoPrepago: "1GB de datos",type:'internet', selected:false },
@@ -19,9 +19,10 @@ export class InitialComponent implements OnInit {
 
   constructor(
     private bonoService: BonoService,
-    private route: Router
+    private route: Router,
 
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
   }
