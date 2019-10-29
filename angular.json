@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tdp-novum-recargas": {
+    "tdp-novum-bonoprepago": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tdp-novum-recargas",
+            "outputPath": "dist/tdp-novum-bonoprepago",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tdp-novum-recargas:build"
+            "browserTarget": "tdp-novum-bonoprepago:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tdp-novum-recargas:build:production"
+              "browserTarget": "tdp-novum-bonoprepago:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tdp-novum-recargas:build"
+            "browserTarget": "tdp-novum-bonoprepago:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "tdp-novum-recargas-e2e": {
+    "tdp-novum-bonoprepago-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tdp-novum-recargas:serve"
+            "devServerTarget": "tdp-novum-bonoprepago:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tdp-novum-recargas:serve:production"
+              "devServerTarget": "tdp-novum-bonoprepago:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "tdp-novum-recargas"
+  "defaultProject": "tdp-novum-bonoprepago"
 }

@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --primaryBlue: #00a9e0;
+    --primaryGreen: #5BC500;
+    --secondaryGreen: #CDEDB2;
+    --notationText: #2A2A3C;
+    --grey1: #DDDDDD;
+    --grey2: #757575;
+}
+body,html,div,h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    box-sizing: border-box;
+}
+
+.tdp-button, .tdp-button-opaque{
+    padding: 12px 0;
+    text-align: center;
+    min-height: 48px;
+    box-sizing: border-box;
+    color:white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tdp-button{
+    background-color: var(--primaryGreen);
+}
+.tdp-button-opaque{
+    background-color: var(--secondaryGreen);
+}

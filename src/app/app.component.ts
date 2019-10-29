@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tdp-novum-recargas';
+  title = 'tdp-novum-bonoprepago';
 }

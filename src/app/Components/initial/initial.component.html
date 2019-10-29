@@ -1,0 +1,27 @@
+<div class="initial-container">
+    <p class="notation">¡Premiamos tu tiempo con nosotros!</p>
+    <div class="gift-container">
+      <img
+        src="assets/images/icons/regalo.svg"
+        alt="bono-regalo-movistar"
+      />
+    </div>
+    <label>Elige el bono de tu preferencia</label>
+
+    <div class="bonus-list">
+      <div class="bonus-for" *ngFor="let bono of listOfBonos; let index = index;">
+        <div class="bonus-item" [ngClass]="{'selected': bono.selected}" (click)="selectedBono(index)">
+          <div class="bono-text-container">
+            <label>{{bono.bonoPrepago}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tdp-first-detail">
+      
+      <label class="tdp-text-detail">Conoce más sobre tus bonos</label>
+      <div [ngClass]="buttonClases()">
+        <label>Canjear</label>
+      </div>
+    </div>
+</div>
