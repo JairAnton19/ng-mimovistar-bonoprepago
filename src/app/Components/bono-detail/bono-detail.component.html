@@ -1,3 +1,53 @@
-<p>
-  bono-detail works!
-</p>
+
+
+<div class="initial-container">
+    <div class="contenedor">
+
+        <div class="titlediv">
+            <h1 class="title">¡A más tiempo con nosotros,</h1>
+            <h1 class="title">más beneficios!</h1>
+        </div>
+
+        <swiper [config]="config" >
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of slides">
+                    <div  [ngClass]="(item.canje==true)?'swiper-headblue':'swiper-head'">
+                        <h2>{{item.tiempoP}}</h2>
+                        <p>Podras elegir una vez al mes</p>
+                    </div>
+                    <div class="swiper-body">
+                        <div class="swiper-body-hijo" align='center'>
+                            <h1>{{item.plan}}</h1>
+                            <img
+                                [src]="(item.canje==true)?'assets/images/icons/circleBlue.png':'assets/images/icons/circleGreen.png'"
+                                width="30" height="30"
+                                alt="bono-regalo-movistar"
+                            />
+                            <p>{{item.mb}}</p>
+                            <label>{{item.tiempoS}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="swiper-pagination"></div>
+        </swiper>
+
+        
+        
+    </div>
+
+
+
+
+
+    <div class="align-bottom">
+        <div class="adicional">
+                <img src="assets/images/icons/circleAlert.png" width="22" height="22"/>  <label>Tienes X meses con nosotros</label>
+        </div>
+        <div class="tdp-button">
+            <label >{{platform == "android" ? "VOLVER A MI LINEA":"Volver a mi linea"}}</label>
+        </div>
+    </div>
+
+</div>

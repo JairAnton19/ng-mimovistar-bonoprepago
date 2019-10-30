@@ -39,8 +39,6 @@ export class InitialComponent implements OnInit {
         this.listOfBonos[i].selected = false;
       }
     }
-
-    console.log(this.listOfBonos[index]);
   }
 
   // change button clases
@@ -56,7 +54,6 @@ export class InitialComponent implements OnInit {
   public sendData():void{
     this.bonoService.setBono(this.bonoSelected);
     this.route.navigate(['/canje']);
-
   }
 
 }
