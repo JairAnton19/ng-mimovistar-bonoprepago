@@ -29,15 +29,6 @@
     margin-bottom: 20px;
 }
 
-label{
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 20px;
-    text-align: center;
-}
-
 .circle{
     width: 22px;
     height: 22px;
@@ -82,7 +73,6 @@ label{
 .bonus-list{
     display: flex;
     width: 100%;
-    flex:1;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: center;
@@ -98,24 +88,9 @@ label{
     background-color: var(--primaryGreen);
 }
 
-.tdp-text-detail{
-    
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    color: var(--primaryBlue);
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.tdp-first-detail{
+.initial-content{
     display: flex;
     flex-direction: column;
-    flex:1;
-    min-height: 100px;
-    justify-content: space-between;
-    
+    flex: 9;
+    justify-content: center;
 }

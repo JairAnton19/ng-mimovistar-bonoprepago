@@ -1,3 +1,4 @@
+import { Bono } from './../../models/bono.model';
 import { Component, OnInit } from '@angular/core';
 import { BonoService } from 'src/app/services/bono.service';
 
@@ -8,13 +9,15 @@ import { BonoService } from 'src/app/services/bono.service';
 })
 export class CanjedBonusComponent implements OnInit {
 
+  bono: Bono = new Bono;
+
   constructor(
     private _bonusService: BonoService
   ) { }
 
   ngOnInit() {
-    let bono = this._bonusService.getBono();
-    console.log(bono)
+    console.log(navigator);
+    this.bono = this._bonusService.getBono();
   }
 
 }

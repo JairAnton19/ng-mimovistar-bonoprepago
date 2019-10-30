@@ -1,4 +1,5 @@
 <div class="initial-container">
+  <div class="initial-content">
     <p class="notation">¡Premiamos tu tiempo con nosotros!</p>
     <div class="gift-container">
       <img
@@ -7,7 +8,7 @@
       />
     </div>
     <label>Elige el bono de tu preferencia</label>
-
+  
     <div class="bonus-list">
       <div class="bonus-for" *ngFor="let bono of listOfBonos; let index = index;">
         <div class="bonus-item" [ngClass]="{'selected': bono.selected}" (click)="selectedBono(index)">
@@ -17,7 +18,8 @@
         </div>
       </div>
     </div>
-    <div class="tdp-first-detail">
+  </div>
+  <div class="tdp-first-detail">
       
       <label class="tdp-text-detail">Conoce más sobre tus bonos</label>
       <div [ngClass]="buttonClases()" (click)="sendData()">

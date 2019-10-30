@@ -1,3 +1,17 @@
-<p>
-  canjed-bonus works!
-</p>
+<div class="cajed-bonus-container">
+  <div class="canjed-bonus-content">
+  <img
+      [src]="bono.type === 'internet' ? 'assets/images/icons/call-bonus.svg' : 'assets/images/icons/mobile-data.svg' "
+      alt="regalo img"  
+  />
+    <label>¡Disfruta tu regalo!</label>
+    <p class="bonus-message">¡Has recargado tu bono <font class="bonus-name">{{bono.name}}</font> con exito!</p>
+    <p style="margin-bottom: 40px; text-align: center;">Recuerda que tu bono tiene duración de un día.</p>
+  </div>
+  <div class="tdp-first-detail">
+      <label class="tdp-text-detail">Conoce más sobre tus bonos</label>
+      <div class="tdp-button">
+        <label>Volver a mi linea</label>
+      </div>
+  </div>
+</div>
