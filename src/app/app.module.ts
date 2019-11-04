@@ -7,6 +7,7 @@ import { CanjedBonusComponent } from './Components/canjed-bonus/canjed-bonus.com
 import { BonoDetailComponent } from './Components/bono-detail/bono-detail.component';
 import { ErrorComponent } from './Components/error/error.component';
 import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
     ErrorComponent
   ],
   imports: [
+    BrowserAnimationsModule, 
     BrowserModule,
     AppRoutingModule,
     Angular2UsefulSwiperModule

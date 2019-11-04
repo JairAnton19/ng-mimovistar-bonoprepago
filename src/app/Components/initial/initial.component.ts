@@ -56,9 +56,8 @@ export class InitialComponent implements OnInit {
     this.route.navigate(['/canje']);
   }
 
-  public goToDetail(): void{
-    this.route.navigate(['/bono']);
-
+  public linkRouter():void{
+    this.route.navigate(['/bono-detail']);
   }
 
 }
