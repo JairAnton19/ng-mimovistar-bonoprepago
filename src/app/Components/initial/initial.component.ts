@@ -56,4 +56,8 @@ export class InitialComponent implements OnInit {
     this.route.navigate(['/canje']);
   }
 
+  public linkRouter():void{
+    this.route.navigate(['/bono-detail']);
+  }
+
 }

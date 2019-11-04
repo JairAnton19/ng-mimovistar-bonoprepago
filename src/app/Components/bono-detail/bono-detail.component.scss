@@ -60,6 +60,7 @@
         color: #FFFFFF;
     }
 }
+
 .swiper-body{
     height: 300px;
     width: 100%;
@@ -73,7 +74,7 @@
         display: table-cell;
         vertical-align: middle;
 
-        h1{
+        div{
             font-family: 'Roboto', sans-serif;
             font-style: normal;
             font-weight: 400;
@@ -83,9 +84,11 @@
             line-height: 20px;
             margin-bottom: 24px;
         }
+
         img{
             margin-bottom: 24px;
         }
+
         p{
             font-family: 'Roboto', sans-serif;
             font-style: normal;
@@ -95,6 +98,7 @@
             text-align: center;
             color: #2A2A3C;
         }
+        
         label{
             font-family: 'Roboto', sans-serif;
             font-style: normal;
@@ -186,6 +190,50 @@
     margin:0;
 }
 
+
+@media only screen and (max-width: 320px) {
+    .swiper-slide{
+        width: 230px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .swiper-slide{
+        width: 360px;
+    }
+    .swiper-headblue{
+        height: 96px;
+    
+        h2{
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+    }
+
+    .swiper-head{
+        height: 96px;
+        h2{
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+    }
+    .swiper-body{
+        height: 390px;
+
+        .swiper-body-hijo{
+
+            div{
+                margin-bottom: 50px;
+            }
+            img{
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+
+
 @media only screen and (max-width: 359px) {
     .swiper-body{
         height: 220px;
@@ -216,3 +264,4 @@
         flex-direction: column;
     }
 }
+

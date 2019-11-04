@@ -17,7 +17,7 @@
                     </div>
                     <div class="swiper-body">
                         <div class="swiper-body-hijo" align='center'>
-                            <h1>{{item.plan}}</h1>
+                            <div [innerHTML]=item.plan></div>
                             <img
                                 [src]="(item.canje==true)?'assets/images/icons/circleBlue.png':'assets/images/icons/circleGreen.png'"
                                 width="30" height="30"
