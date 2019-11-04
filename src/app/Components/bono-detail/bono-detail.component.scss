@@ -1,0 +1,219 @@
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 250px;
+    background-color: var(--light);
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15)
+  }
+
+.swiper-head{
+    height: 63px;
+    width: 100%;
+    background-color: var(--primaryGreen);
+
+    h2{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        color: var(--light);
+        padding-top: 8px;
+        padding-bottom: 3px;
+    }
+    p{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        color: var(--light)
+    }
+}
+.swiper-headblue{
+    height: 63px;
+    width: 100%;
+    background-color: var(--primaryBlue);
+
+    h2{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        color:var(--light);
+        padding-top: 8px;
+        padding-bottom: 3px;
+    }
+    p{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        color: var(--light);
+    }
+}
+.swiper-body{
+    height: 300px;
+    width: 100%;
+    background-color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    .swiper-body-hijo{
+        display: table-cell;
+        vertical-align: middle;
+
+        h1{
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 17px;
+            text-align: center;
+            color: var(--grey3);
+            line-height: 20px;
+            margin-bottom: 24px;
+        }
+        img{
+            margin-bottom: 24px;
+        }
+        p{
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 17px;
+            align-items: center;
+            text-align: center;
+            color: var(--notationText);
+        }
+        label{
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 17px;
+            align-items: center;
+            text-align: center;
+            color: var(--grey3);
+        }
+    }
+    
+}
+
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: var(--notationText);
+    
+}
+
+.titlediv{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.tdp-button{
+    padding: 14px 0px 10px;
+    min-height: 48px;
+    text-align: center;
+    color:var(--light);
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.tdp-button label{
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.align-bottom{
+    position: absolute;
+    bottom: 16px;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.selected{
+    height: 30px;
+}
+
+.adicional{
+    text-align: center;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    label{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: -0.154px;
+        color: var(--grey2);
+    }
+    img{
+        bottom:-100px;
+        margin-right: 10px;
+    }
+}
+
+.initial-container{
+    min-height: 100vh;
+    max-width: 100vw;
+    margin:0;
+}
+
+@media only screen and (max-width: 359px) {
+    .swiper-body{
+        height: 220px;
+    }
+}
+
+
+@media only screen and (min-height: 700px) {
+    .initial-container{
+        padding-top: 50px;
+    }
+}
+
+@media only screen and (min-height: 800px) {
+    .initial-container{
+        padding-top: 80px;
+    }
+}
+
+
+@media only screen and (min-height: 900px) {
+    .initial-container{
+        padding-top: 0px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
