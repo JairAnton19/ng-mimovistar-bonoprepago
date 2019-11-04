@@ -98,7 +98,7 @@
             text-align: center;
             color: #2A2A3C;
         }
-        
+
         label{
             font-family: 'Roboto', sans-serif;
             font-style: normal;
@@ -198,7 +198,13 @@
 }
 
 
+
+
+
 @media only screen and (min-width: 768px) {
+    .titlediv{
+        padding-bottom: 100px;
+    }
     .swiper-slide{
         width: 360px;
     }
@@ -206,7 +212,7 @@
         height: 96px;
     
         h2{
-            padding-top: 20px;
+            padding-top: 22px;
             padding-bottom: 10px;
         }
     }
@@ -214,7 +220,7 @@
     .swiper-head{
         height: 96px;
         h2{
-            padding-top: 20px;
+            padding-top: 22px;
             padding-bottom: 10px;
         }
     }
@@ -232,6 +238,44 @@
         }
     }
 }
+
+// @media only screen and (min-width: 1025px){
+//     .titlediv{
+//         padding-bottom: 30px;
+//     }
+//     .swiper-slide{
+//         width: 250px;
+//     }
+//     .swiper-headblue{
+//         height: 63px;
+    
+//         h2{ 
+//             padding-top: 8px;
+//             padding-bottom: 3px;    
+//         }
+//     }
+
+//     .swiper-head{
+//         height: 63px;
+//         h2{ 
+//             padding-top: 8px;
+//             padding-bottom: 3px;
+//         }
+//     }
+//     .swiper-body{
+//         height: 300px;
+
+//         .swiper-body-hijo{
+
+//             div{
+//                 margin-bottom: 24px;
+//             }
+//             img{
+//                 margin-bottom: 24px;
+//             }
+//         }
+//     }
+// }
 
 
 @media only screen and (max-width: 359px) {

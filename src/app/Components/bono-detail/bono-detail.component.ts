@@ -11,9 +11,9 @@ export class BonoDetailComponent implements OnInit {
   
   platform = null
   slides = [
-    {tiempoP:'De 2 a 3 meses',plan:'Minutos ilimitados a todo<br/>Movistar por 1 día',mb:'100MB',tiempoS:'por 1 día',canje:false},
-    {tiempoP:'De 4 a 6 meses',plan:'Llamadas ilimitadas a todo<br/>Movistar por 1 día',mb:'500MB',tiempoS:'por 1 día',canje:true},
-    {tiempoP:'De 7 a 9 meses',plan:'Minutos ilimitados a todo<br/>Movistar por 1 día',mb:'800MB',tiempoS:'por 1 día',canje:false}
+    {tiempoP:'De 2 a 3 meses',plan:'Minutos ilimitados a todo<br/><label class="labelMovistar">Movistar</label> por 1 día',mb:'100MB',tiempoS:'por 1 día',canje:false},
+    {tiempoP:'De 4 a 6 meses',plan:'Llamadas ilimitadas a todo<br/><label class="labelMovistar">Movistar</label> por 1 día',mb:'500MB',tiempoS:'por 1 día',canje:true},
+    {tiempoP:'De 7 a 9 meses',plan:'Minutos ilimitados a todo<br/><label class="labelMovistar">Movistar</label> por 1 día',mb:'800MB',tiempoS:'por 1 día',canje:false}
   ]
 
   config: SwiperOptions = {
