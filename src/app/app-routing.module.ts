@@ -7,11 +7,11 @@ import { ErrorComponent } from './Components/error/error.component';
 
 
 const routes: Routes = [
-  {path:'bono-home/:parametro', component:InitialComponent,data: {animation: 'Home'}},
-  {path:'canje', component:CanjedBonusComponent },
+  {path:'bono-home/:parametro', component:InitialComponent, data: {animation: 'Home'}},
+  {path:'canje', component:CanjedBonusComponent, data:{animation: 'Home'} },
   {path:'bono-detail', component:BonoDetailComponent,data: {animation: 'Detail'} },
   {path:'notFound', component:ErrorComponent},
-  {path: '', redirectTo:'bono-prepago-home/asd', pathMatch: 'full'},
+  {path: '', redirectTo:'bono-home/asd', pathMatch: 'full'},
   {path: '**', redirectTo:'notFound', pathMatch: 'full'}
 ];
 
