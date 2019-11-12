@@ -1,0 +1,67 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+   name: ms-ne-mimovistar-bonoprepago
+   namespace: mimovistar
+spec:
+   replicas: 2
+   strategy:
+    type: Recreate
+   template:
+     metadata:
+       labels:
+         app: ms-ne-mimovistar-bonoprepago
+     spec:
+       containers:
+       - name: ms-ne-mimovistar-bonoprepago
+         image: acrgenesis.azurecr.io/ms-ne-mimovistar-bonoprepago:latest
+         imagePullPolicy: Always
+         ports:
+         - containerPort: 8082
+       imagePullSecrets: 
+       - name: acr-registry
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-ne-mimovistar-bonoprepago-svc
+  namespace: mimovistar
+  labels:
+    app: "ms-ne-mimovistar-bonoprepago"
+spec:
+  ports:
+  - port: 4041
+    targetPort: 8082
+    protocol: TCP
+    name: http
+  selector:
+    app: ms-ne-mimovistar-bonoprepago
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ms-ne-mimovistar-bonoprepago-ingress-nginx
+  namespace: mimovistar
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Request-ID, request-date"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+    #nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Ingress: $ingress_name";
+spec:
+  tls:
+  - hosts:
+    - aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com
+    secretName: ms-ne-mimovistar-bonoprepago-ingress-secret
+  rules:
+  - host: aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com
+    http:
+      paths:
+      - backend:
+          serviceName: ms-ne-mimovistar-bonoprepago
+          servicePort: 4041
+        path: /bonoprepago/v1/(.*)
