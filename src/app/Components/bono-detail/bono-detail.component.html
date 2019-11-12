@@ -45,7 +45,7 @@
         <div class="adicional">
                 <img src="assets/images/icons/circleAlert.png" width="22" height="22"/>  <label>Tienes X meses con nosotros</label>
         </div>
-        <div class="tdp-button">
+        <div [ngClass]="buttonClases()">
             <label >{{platform == "android" ? "VOLVER A MI LINEA":"Volver a mi linea"}}</label>
         </div>
     </div>

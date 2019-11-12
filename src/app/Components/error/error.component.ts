@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DetectedPlatform } from './../../functions/detectedPlatform';
+
 
 @Component({
   selector: 'app-error',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  platform = null
+  constructor(private detectedPlatform: DetectedPlatform) { }
 
   ngOnInit() {
+
+    this.platform = this.detectedPlatform.detectPlatform()
+    
+  }
+
+  public buttonClases(){
+    return ['tdp-button',this.platform=='ios'?'fontIos':'fontAndroid'];
   }
 
 }

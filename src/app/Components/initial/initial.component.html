@@ -21,9 +21,9 @@
   </div>
   <div class="tdp-first-detail">
       
-      <label class="tdp-text-detail" (click)="linkRouter()">Conoce más sobre tus bonos</label>
-      <div [ngClass]="buttonClases()" (click)="sendData()">
-        <label>Canjear</label>
+      <label class="tdp-text-detail" (click)="linkRouter('/bono-detail')">Conoce más sobre tus bonos</label>
+      <div [ngClass]="buttonClases(checked)" (click)="sendData(checked)">
+        <label >{{platform == "android" ? "CANJEAR":"Canjear"}}</label>
       </div>
     </div>
 </div>

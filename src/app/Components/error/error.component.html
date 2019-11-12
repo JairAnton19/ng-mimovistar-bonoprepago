@@ -14,7 +14,7 @@
 </div>
 
 <div class="align-bottom">
-    <div class="tdp-button">
-        <label>VOLVER A MI LINEA</label>
+    <div [ngClass]="buttonClases()">
+        <label >{{platform == "android" ? "VOLVER A MI LÍNEA":"Volver a mi línea"}}</label>
     </div>
 </div>
