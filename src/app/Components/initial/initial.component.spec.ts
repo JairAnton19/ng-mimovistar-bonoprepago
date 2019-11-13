@@ -39,13 +39,13 @@ describe('InitialComponent', () => {
 
   describe('Cuando llamo la funcion', () => {
     it('linkrouter', () => {
-      expect(component.linkRouter('/ruta')).toString()
+      expect(component.linkRouter('/ruta')).toEqual(true)
     })
   })
 
   describe('Cuando llamo la funcion', () => {
     it('senData', () => {
-      expect(component.sendData(true)).toString()
+      expect(component.sendData(true)).toEqual(true)
     })
   })
 
