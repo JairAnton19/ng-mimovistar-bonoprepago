@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'bono-detail', component:BonoDetailComponent,data: {animation: 'Detail'} },
   {path:'notFound', component:ErrorComponent},
   {path: '', redirectTo:'bono-home/asd', pathMatch: 'full'},
+  
   {path: '**', redirectTo:'notFound', pathMatch: 'full'}
 ];
 
