@@ -92,7 +92,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
+            ],
+			"coverage": true
           }
         },
         "lint": {
