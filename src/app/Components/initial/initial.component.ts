@@ -17,8 +17,8 @@ export class InitialComponent implements OnInit {
   checked: boolean = false;
   bonoSelected: Bono = new Bono;
   listOfBonos: any[] = [
-    {bonoPrepago: "Minutos ilimitados", type:'call',selected:false},
-    {bonoPrepago: "1GB de datos",type:'internet',selected:false},
+    {bonoPrepago: "Llamadas ilimitadas a todo <span class='labelNegrita'>Movistar</span> por 1 día", type:'call',selected:false},
+    {bonoPrepago: "<span class='labelNegrita'>500 MB</span> por 1 día",type:'internet',selected:false},
   ]
 
   constructor(private bonoService: BonoService,private route: Router,private detectedPlatform: DetectedPlatform) { 

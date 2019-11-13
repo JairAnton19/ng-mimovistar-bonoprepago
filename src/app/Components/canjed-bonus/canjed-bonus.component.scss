@@ -25,4 +25,25 @@ img{
     flex-direction: column;
     flex: 9;
     justify-content: center;
+    div{
+        text-align: center;
+        font-size: 18px;
+        color: #666666;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+    span{
+        font-size: 20px;
+        color: #2A2A3C !important;
+        line-height: 24px;
+        text-align: center;
+        font-weight: 400;
+    }
+    p{
+        text-align: center;
+        font-size: 18px;
+        color: #666666;
+        font-weight: 300;
+    }
 }
+
