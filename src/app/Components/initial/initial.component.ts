@@ -66,7 +66,7 @@ export class InitialComponent implements OnInit {
     }
   }
 
-  public linkRouter(ruta:string):void{
+  public linkRouter(ruta:string){
       this.route.navigate([ruta])
   }
 

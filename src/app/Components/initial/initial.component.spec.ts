@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { InitialComponent } from './initial.component';
+import { DetectedPlatform } from './../../functions/detectedPlatform';
 
 describe('InitialComponent', () => {
   let component: InitialComponent;
@@ -11,7 +12,8 @@ describe('InitialComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([]),
       ],
-      declarations: [ InitialComponent ]
+      declarations: [ InitialComponent ],
+      providers: [DetectedPlatform]
     })
     .compileComponents();
   }));
@@ -27,11 +29,11 @@ describe('InitialComponent', () => {
   describe('Cuando llamo la funcion', () => {
       it('buttonclases',()=>{
         const checked: boolean = false;
-        expect(component.buttonClases(checked)).toEqual(['tdp-button-opaque'])
+        expect(component.buttonClases(checked)).toEqual(['tdp-button-opaque','fontAndroid'])
       })
       it('buttonclases',()=>{
         const checked: boolean = true;
-        expect(component.buttonClases(checked)).toEqual(['tdp-button'])
+        expect(component.buttonClases(checked)).toEqual(['tdp-button','fontAndroid'])
       })
   })
 
@@ -49,7 +51,7 @@ describe('InitialComponent', () => {
 
   describe('Cuando llamo la funcion', () => {
     it('selectedBono', () => {
-      expect(component.selectedBono(0)).toEqual({checked:true,name:"Minutos ilimitados",type:'call'})
+      expect(component.selectedBono(0)).toEqual({checked:true,name:"Llamadas ilimitadas a todo <span class='labelNegrita'>Movistar</span> por 1 día",type:'call'})
     })
   })
 

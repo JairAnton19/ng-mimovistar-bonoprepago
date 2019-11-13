@@ -13,9 +13,7 @@ export class ErrorComponent implements OnInit {
   constructor(private detectedPlatform: DetectedPlatform) { }
 
   ngOnInit() {
-
     this.platform = this.detectedPlatform.detectPlatform()
-    
   }
 
   public buttonClases(){

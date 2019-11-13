@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ErrorComponent } from './error.component';
+import { DetectedPlatform } from './../../functions/detectedPlatform';
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
@@ -11,7 +12,8 @@ describe('ErrorComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([]),
       ],
-      declarations: [ ErrorComponent ]
+      declarations: [ ErrorComponent ],
+      providers: [DetectedPlatform]
     })
     .compileComponents();
   }));
@@ -21,6 +23,12 @@ describe('ErrorComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  describe('Cuando llamo la funcion', () => {
+    it('buttonclases',()=>{
+      expect(component.buttonClases()).toEqual(['tdp-button','fontAndroid'])
+    })
+  })
 
   // it('should create', () => {
   //   expect(component).toBeTruthy();

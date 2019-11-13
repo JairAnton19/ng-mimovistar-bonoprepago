@@ -18,18 +18,25 @@ export class CanjedBonusComponent implements OnInit {
   constructor(private _bonusService: BonoService,private route: Router,private detectedPlatform: DetectedPlatform) { 
 
     this.bono = this._bonusService.getBono()
-    if(this.bono){
-    }else{
-      this.route.navigate(['/notFound']);    
-    }
+    
   }
 
   async ngOnInit() {
-    this.textPrincipal = "¡Has canjeado tu bono <span class='negritaTotal'>" +  this.bono.name + "</span> con exito!"
     this.platform = this.detectedPlatform.detectPlatform()
+    this.existBono()
   }
 
-  public linkRouter(ruta:string):void{
+  public existBono(){
+
+    if(this.bono){
+      this.textPrincipal = "¡Has canjeado tu bono <span class='negritaTotal'>" +  this.bono.name + "</span> con exito!"
+    }else{
+      this.route.navigate(['']);    
+    }
+
+  }
+
+  public linkRouters(ruta:string){
     this.route.navigate([ruta])
   }
 

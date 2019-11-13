@@ -16,7 +16,8 @@ import { DetectedPlatform } from './functions/detectedPlatform'
     InitialComponent,
     CanjedBonusComponent,
     BonoDetailComponent,
-    ErrorComponent
+    ErrorComponent,
+    
   ],
   imports: [
     BrowserAnimationsModule, 

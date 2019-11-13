@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { RouterTestingModule } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DetectedPlatform } from './../../functions/detectedPlatform';
 import { BonoDetailComponent } from './bono-detail.component';
 
 describe('BonoDetailComponent', () => {
@@ -9,9 +10,10 @@ describe('BonoDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        // RouterTestingModule.withRoutes([]),
+        RouterTestingModule.withRoutes([]),
       ],
-      declarations: [ BonoDetailComponent ]
+      declarations: [ BonoDetailComponent ],
+      providers: [ DetectedPlatform]
     })
     .compileComponents();
   }));
@@ -21,6 +23,12 @@ describe('BonoDetailComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  describe('Cuando llamo la funcion', () => {
+    it('buttonclases',()=>{
+      expect(component.buttonClases()).toString()
+    })
+  })
 
   // it('should create', () => {
   //   expect(component).toBeTruthy();
