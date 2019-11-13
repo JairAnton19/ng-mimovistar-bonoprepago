@@ -88,8 +88,21 @@ label{
 .labelMovistar{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 17px;
     text-align: center;
+    color: var(--notationText);
+}
+.labelNegrita{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--notationText);
+}
+
+.negritaTotal{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
     color: var(--notationText);
 }

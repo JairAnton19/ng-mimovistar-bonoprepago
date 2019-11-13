@@ -12,19 +12,21 @@ import { DetectedPlatform } from './../../functions/detectedPlatform';
 export class CanjedBonusComponent implements OnInit {
 
   bono: Bono = new Bono;
+  textPrincipal: string = null
   platform = null
 
   constructor(private _bonusService: BonoService,private route: Router,private detectedPlatform: DetectedPlatform) { 
 
-  }
-
-  ngOnInit() {
     this.bono = this._bonusService.getBono()
-    this.platform = this.detectedPlatform.detectPlatform()
     if(this.bono){
     }else{
       this.route.navigate(['/notFound']);    
     }
+  }
+
+  async ngOnInit() {
+    this.textPrincipal = "¡Has canjeado tu bono <span class='negritaTotal'>" +  this.bono.name + "</span> con exito!"
+    this.platform = this.detectedPlatform.detectPlatform()
   }
 
   public linkRouter(ruta:string):void{

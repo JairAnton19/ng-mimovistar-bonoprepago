@@ -13,7 +13,8 @@
       <div class="bonus-for" *ngFor="let bono of listOfBonos; let index = index;">
         <div class="bonus-item" [ngClass]="{'selected': bono.selected}" (click)="selectedBono(index)">
           <div class="bono-text-container">
-            <label>{{bono.bonoPrepago}}</label>
+              <div [innerHTML]=bono.bonoPrepago></div>
+            <!-- <label>{{bono.bonoPrepago}}</label> -->
           </div>
         </div>
       </div>
