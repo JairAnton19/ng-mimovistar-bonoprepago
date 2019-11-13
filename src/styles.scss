@@ -9,6 +9,7 @@
     --grey2: #757575;
     --grey3: #666666;
 }
+
 body,html,div,h1,h2,h3,h4,h5,h6,p{
     margin: 0;
     padding: 0;
@@ -19,23 +20,35 @@ body,html,div,h1,h2,h3,h4,h5,h6,p{
 }
 
 .tdp-button, .tdp-button-opaque{
-    padding: 12px 0;
     text-align: center;
     min-height: 48px;
     box-sizing: border-box;
     color:white;
     border-radius: 8px;
     cursor: pointer;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .tdp-button{
     background-color: var(--primaryGreen);
 }
+
 .tdp-button-opaque{
     background-color: var(--secondaryGreen);
 }
 
-//Some here agoes here some
+.fontIos label{
+    font-size: 16px !important;
+    font-weight: 400;
+}
+
+.fontAndroid label{
+    font-size: 14px !important;
+    font-weight: 400;
+}
 
 label{
     font-family: 'Roboto', sans-serif;
@@ -71,6 +84,7 @@ label{
 .font-color{
     color:red !important;
 }
+
 .labelMovistar{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
