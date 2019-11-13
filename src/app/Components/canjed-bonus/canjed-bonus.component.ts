@@ -33,11 +33,13 @@ export class CanjedBonusComponent implements OnInit {
     }else{
       this.route.navigate(['']);    
     }
+    return true
 
   }
 
   public linkRouters(ruta:string){
     this.route.navigate([ruta])
+    return true
   }
 
   public buttonClases(){

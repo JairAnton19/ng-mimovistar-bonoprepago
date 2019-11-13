@@ -32,13 +32,13 @@ describe('CanjedBonusComponent', () => {
 
   describe('Cuando llamo la funcion', () => {
     it('linkrouter', () => {
-      expect(component.linkRouters('/ruta')).toString()
+      expect(component.linkRouters('/ruta')).toEqual(true)
     })
   })
 
   describe('Cuando llamo la funcion', () => {
     it('linkrouter', () => {
-      expect(component.existBono()).toString()
+      expect(component.existBono()).toEqual(true)
     })
   })
 

@@ -59,15 +59,17 @@ export class InitialComponent implements OnInit {
   }
 
   //Set data of bonus selected
-  public sendData(valor:boolean):void{
+  public sendData(valor:boolean){
     if(valor){
       this.bonoService.setBono(this.bonoSelected);
       this.route.navigate(['/canje'])
     }
+    return true
   }
 
   public linkRouter(ruta:string){
       this.route.navigate([ruta])
+      return true
   }
 
 }
