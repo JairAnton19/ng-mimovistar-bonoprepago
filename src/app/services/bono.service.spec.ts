@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import  {BonoService}  from './bono.service';
+import {BonoService} from './bono.service';
 
 describe('BonoService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -9,17 +9,16 @@ import { DetectedPlatform } from './../../functions/detectedPlatform';
 })
 export class ErrorComponent implements OnInit {
 
-  platform = null
+  platform = null;
   constructor(private detectedPlatform: DetectedPlatform) { }
 
   ngOnInit() {
 
-    this.platform = this.detectedPlatform.detectPlatform()
-    
+    this.platform = this.detectedPlatform.detectPlatform();
   }
 
-  public buttonClases(){
-    return ['tdp-button',this.platform=='ios'?'fontIos':'fontAndroid'];
+  public buttonClases() {
+    return ['tdp-button', this.platform  === 'ios' ? 'fontIos' : 'fontAndroid'];
   }
 
 }

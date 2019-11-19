@@ -24,9 +24,9 @@ describe('CanjedBonusComponent', () => {
 
   describe('Cuando llamo la funcion', () => {
     it('linkrouters', () => {
-      expect(component.linkRouter('/ruta')).toString()
-    })
-  })
+      expect(component.linkRouter('/ruta')).toString();
+    });
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

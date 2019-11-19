@@ -12,29 +12,28 @@ import { DetectedPlatform } from './../../functions/detectedPlatform';
 export class CanjedBonusComponent implements OnInit {
 
   bono: Bono = new Bono;
-  textPrincipal: string = null
-  platform = null
+  textPrincipal: string = null;
+  platform = null;
 
-  constructor(private _bonusService: BonoService,private route: Router,private detectedPlatform: DetectedPlatform) { 
-
-    this.bono = this._bonusService.getBono()
-    if(this.bono){
-    }else{
-      this.route.navigate(['/notFound']);    
+  constructor(private _bonusService: BonoService, private route: Router, private detectedPlatform: DetectedPlatform) {
+    this.bono = this._bonusService.getBono();
+    if (this.bono) {
+    } else {
+      this.route.navigate(['/notFound']);
     }
   }
 
   async ngOnInit() {
-    this.textPrincipal = "¡Has canjeado tu bono <span class='negritaTotal'>" +  this.bono.name + "</span> con exito!"
-    this.platform = this.detectedPlatform.detectPlatform()
+    this.textPrincipal = '¡Has canjeado tu bono <span class="negritaTotal">' +  this.bono.name + '</span> con exito!';
+    this.platform = this.detectedPlatform.detectPlatform();
   }
 
-  public linkRouter(ruta:string):void{
-    this.route.navigate([ruta])
+  public linkRouter(ruta: string): void {
+    this.route.navigate([ruta]);
   }
 
-  public buttonClases(){
-    return ['tdp-button',this.platform=='ios'?'fontIos':'fontAndroid'];
+  public buttonClases() {
+    return ['tdp-button', this.platform === 'ios' ? 'fontIos' : 'fontAndroid'];
   }
 
 }

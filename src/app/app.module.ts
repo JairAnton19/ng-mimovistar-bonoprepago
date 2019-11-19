@@ -8,7 +8,7 @@ import { BonoDetailComponent } from './components/bono-detail/bono-detail.compon
 import { ErrorComponent } from './components/error/error.component';
 import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DetectedPlatform } from './functions/detectedPlatform'
+import { DetectedPlatform } from './functions/detectedPlatform';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { DetectedPlatform } from './functions/detectedPlatform'
     ErrorComponent
   ],
   imports: [
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     Angular2UsefulSwiperModule
