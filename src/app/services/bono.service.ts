@@ -16,10 +16,7 @@ export class BonoService {
     return this.bono;
   }
 
-  setBono(bono:Bono) {
+  setBono(bono: Bono) {
     return  this.bono = bono;
-   
   }
-
-  
 }

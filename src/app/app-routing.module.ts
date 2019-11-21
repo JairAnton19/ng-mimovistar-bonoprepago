@@ -7,13 +7,12 @@ import { ErrorComponent } from './components/error/error.component';
 
 
 const routes: Routes = [
-  {path:'bono-home/:parametro', component:InitialComponent, data: {animation: 'Home'}},
-  {path:'canje', component:CanjedBonusComponent, data:{animation: 'Canje'} },
-  {path:'bono-detail', component:BonoDetailComponent,data: {animation: 'Detail'} },
-  {path:'notFound', component:ErrorComponent},
-  {path: '', redirectTo:'bono-home/asd', pathMatch: 'full'},
-  
-  {path: '**', redirectTo:'notFound', pathMatch: 'full'}
+  {path: 'bono-home/:parametro', component: InitialComponent, data: {animation: 'Home'}},
+  {path: 'canje', component: CanjedBonusComponent, data: {animation: 'Canje'} },
+  {path: 'bono-detail', component: BonoDetailComponent, data: {animation: 'Detail'} },
+  {path: 'notFound', component: ErrorComponent},
+  {path: '', redirectTo: 'bono-home/asd', pathMatch: 'full'},
+  {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -22,4 +21,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-//some comment
+// some comment

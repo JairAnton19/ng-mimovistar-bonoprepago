@@ -1,4 +1,4 @@
-export class Bono{
-    name:string;
-    type:string;
+export class Bono {
+    name: string;
+    type: string;
 }
