@@ -25,37 +25,20 @@ describe('CanjedBonusComponent', () => {
   });
 
   describe('Cuando llamo la funcion', () => {
-<<<<<<< HEAD
-    it('buttonclases',()=>{
-      expect(component.buttonClases()).toEqual(['tdp-button','fontAndroid'])
-    })
-  })
-=======
     it('linkrouters', () => {
       expect(component.linkRouter('/ruta')).toString();
     });
   });
->>>>>>> cfafcee26a70d4f2caf91717c83b24eb09b586d6
 
   describe('Cuando llamo la funcion', () => {
     it('linkrouter', () => {
-      expect(component.linkRouters('/ruta')).toEqual(true)
-    })
-  })
+      expect(component.linkRouters('/ruta')).toEqual(true);
+    });
+  });
 
   describe('Cuando llamo la funcion', () => {
     it('linkrouter', () => {
-      expect(component.existBono()).toEqual(true)
-    })
-  })
-
-  // describe('Cuando llamo la funcion', () => {
-  //   it('linkrouters', () => {
-  //     expect(component.linkRouter('/ruta')).toString()
-  //   })
-  // })
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+      expect(component.existBono()).toEqual(true);
+    });
+  });
 });

@@ -65,29 +65,17 @@ export class InitialComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
-  //Set data of bonus selected
-  public sendData(valor:boolean){
-    if(valor){
-=======
   // Set data of bonus selected
   public sendData(valor: boolean): void {
     if (valor) {
->>>>>>> cfafcee26a70d4f2caf91717c83b24eb09b586d6
       this.bonoService.setBono(this.bonoSelected);
       this.route.navigate(['/canje']);
     }
-    return true
   }
 
-<<<<<<< HEAD
   public linkRouter(ruta:string){
       this.route.navigate([ruta])
       return true
-=======
-  public linkRouter(ruta: string): void {
-    this.route.navigate([ruta]);
->>>>>>> cfafcee26a70d4f2caf91717c83b24eb09b586d6
   }
 
 }
