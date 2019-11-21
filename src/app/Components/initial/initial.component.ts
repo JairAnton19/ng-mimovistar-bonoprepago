@@ -1,9 +1,10 @@
+import { GlobalService } from './../../services/global.service';
 import { DetectedPlatform } from './../../functions/detectedPlatform';
 import { Bono } from './../../models/bono.model';
 import { Component, OnInit } from '@angular/core';
 import { BonoService } from 'src/app/services/bono.service';
 import { Router } from '@angular/router';
-
+import { CONSTANTS } from '../../globals/constants'
 
 
 @Component({
@@ -21,12 +22,20 @@ export class InitialComponent implements OnInit {
     { bonoPrepago: '<span class="labelNegrita">500 MB</span> por 1 día', type: 'internet', selected: false },
   ];
 
-  constructor(private bonoService: BonoService, private route: Router, private detectedPlatform: DetectedPlatform) {
+  constructor(
+    private bonoService: BonoService, 
+    private route: Router, 
+    private detectedPlatform: DetectedPlatform, 
+    private globalService: GlobalService 
+    ) {
   }
 
   ngOnInit() {
 
     this.platform = this.detectedPlatform.detectPlatform();
+    this.globalService.globlalGet(`${CONSTANTS.endPointRecargaListPrices}/926192664`).subscribe((res: any) => {
+      console.log(res)
+    } )
 
   }
 

@@ -9,6 +9,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetectedPlatform } from './functions/detectedPlatform';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DetectedPlatform } from './functions/detectedPlatform';
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    Angular2UsefulSwiperModule
+    Angular2UsefulSwiperModule,
+    HttpClientModule
   ],
   providers: [DetectedPlatform],
   bootstrap: [AppComponent]

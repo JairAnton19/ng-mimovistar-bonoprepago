@@ -26,11 +26,11 @@ describe('InitialComponent', () => {
 
   describe('Cuando llamo la funcion', () => {
       it('buttonclases', () => {
-        const checked: boolean = false;
+        const checked: boolean;
         expect(component.buttonClases(checked)).toEqual(['tdp-button-opaque']);
       });
       it('buttonclases', () => {
-        const checked: boolean = true;
+        const checked: boolean;
         expect(component.buttonClases(checked)).toEqual(['tdp-button']);
       });
   });
