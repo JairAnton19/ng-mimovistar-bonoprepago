@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InitialComponent } from './components/initial/initial.component';
-import { CanjedBonusComponent } from './components/canjed-bonus/canjed-bonus.component';
-import { BonoDetailComponent } from './components/bono-detail/bono-detail.component';
-import { ErrorComponent } from './components/error/error.component';
+import { InitialComponent } from './bussiness/bono/initial/initial.component';
+import { CanjedBonusComponent } from './bussiness/bono/canjed-bonus/canjed-bonus.component';
+import { BonoDetailComponent } from './bussiness/bono/bono-detail/bono-detail.component';
+import { ErrorComponent } from './bussiness/bono/error/error.component';
 
 
 const routes: Routes = [

@@ -1,8 +1,8 @@
-import { Bono } from './../../models/bono.model';
+import { Bono } from '../../../commons/models/bono.model';
 import { Component, OnInit } from '@angular/core';
-import { BonoService } from 'src/app/services/bono.service';
+import { BonoService } from 'src/app/commons/services/bono.service';
 import { Router } from '@angular/router';
-import { DetectedPlatform } from './../../functions/detectedPlatform';
+import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 
 @Component({
   selector: 'app-canjed-bonus',
@@ -28,7 +28,7 @@ export class CanjedBonusComponent implements OnInit {
     this.platform = this.detectedPlatform.detectPlatform();
   }
 
-  public linkRouter(ruta: string): void {
+  public linkRouters(ruta: string): void {
     this.route.navigate([ruta]);
   }
 

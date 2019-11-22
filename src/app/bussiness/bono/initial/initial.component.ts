@@ -1,10 +1,10 @@
-import { GlobalService } from './../../services/global.service';
-import { DetectedPlatform } from './../../functions/detectedPlatform';
-import { Bono } from './../../models/bono.model';
+import { GlobalService } from '../../../commons/services/global.service';
+import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
+import { Bono } from '../../../commons/models/bono.model';
 import { Component, OnInit } from '@angular/core';
-import { BonoService } from 'src/app/services/bono.service';
+import { BonoService } from 'src/app/commons/services/bono.service';
 import { Router } from '@angular/router';
-import { CONSTANTS } from '../../globals/constants'
+import { CONSTANTS } from '../../../commons/services/constants'
 
 
 @Component({
@@ -15,18 +15,18 @@ import { CONSTANTS } from '../../globals/constants'
 export class InitialComponent implements OnInit {
 
   platform = null;
-  checked: boolean = false;
-  bonoSelected: Bono = new Bono;
+  checked: boolean;
+  bonoSelected: Bono = new Bono();
   listOfBonos: any[] = [
     { bonoPrepago: 'Llamadas ilimitadas a todo <span class="labelNegrita">Movistar</span> por 1 día', type: 'call', selected: false },
     { bonoPrepago: '<span class="labelNegrita">500 MB</span> por 1 día', type: 'internet', selected: false },
   ];
 
   constructor(
-    private bonoService: BonoService, 
-    private route: Router, 
-    private detectedPlatform: DetectedPlatform, 
-    private globalService: GlobalService 
+    private bonoService: BonoService,
+    private route: Router,
+    private detectedPlatform: DetectedPlatform,
+    private globalService: GlobalService
     ) {
   }
 
@@ -73,9 +73,9 @@ export class InitialComponent implements OnInit {
     }
   }
 
-  public linkRouter(ruta:string){
-      this.route.navigate([ruta])
-      return true
+  public linkRouter(ruta: string){
+      this.route.navigate([ruta]);
+      return true;
   }
 
 }

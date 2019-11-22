@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CanjedBonusComponent } from './canjed-bonus.component';
-import { DetectedPlatform } from './../../functions/detectedPlatform';
+import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 
 describe('CanjedBonusComponent', () => {
   let component: CanjedBonusComponent;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DetectedPlatform } from './../../functions/detectedPlatform';
+import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 
 
 @Component({
