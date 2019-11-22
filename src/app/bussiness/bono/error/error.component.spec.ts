@@ -25,10 +25,10 @@ describe('ErrorComponent', () => {
   });
 
   describe('Cuando llamo la funcion', () => {
-    it('buttonclases',()=>{
-      expect(component.buttonClases()).toEqual(['tdp-button','fontAndroid'])
-    })
-  })
+    it('buttonclases', () => {
+      expect(component.buttonClases()).toEqual(['tdp-button', 'fontAndroid']);
+    });
+  });
 
   // it('should create', () => {
   //   expect(component).toBeTruthy();

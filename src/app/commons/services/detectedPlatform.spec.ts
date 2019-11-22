@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetectedPlatform } from './detectedPlatform';
 
 describe('DetectedPlatform', () => {
-  let component: DetectedPlatform;
+  // let component: DetectedPlatform;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -18,7 +18,6 @@ import {HttpClientModule} from '@angular/common/http';
     CanjedBonusComponent,
     BonoDetailComponent,
     ErrorComponent,
-    
   ],
   imports: [
     BrowserAnimationsModule,

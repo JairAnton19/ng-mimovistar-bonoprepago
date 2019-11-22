@@ -25,10 +25,10 @@ describe('BonoDetailComponent', () => {
   });
 
   describe('Cuando llamo la funcion', () => {
-    it('buttonclases',()=>{
-      expect(component.buttonClases()).toString()
-    })
-  })
+    it('buttonclases', () => {
+      expect(component.buttonClases()).toString();
+    });
+  });
 
   // it('should create', () => {
   //   expect(component).toBeTruthy();

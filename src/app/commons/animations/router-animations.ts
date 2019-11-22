@@ -53,7 +53,7 @@ const animate3: AnimationMetadata[] = [
         animate('0.5s ease-in-out',
             style({ transform: 'translateX(100%)' }))
     ], { optional: true }),
-]
+];
 
 export const slideInAnimation =
     trigger('routeAnimations', [

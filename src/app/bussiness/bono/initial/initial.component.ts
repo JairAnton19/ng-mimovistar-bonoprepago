@@ -4,7 +4,7 @@ import { Bono } from '../../../commons/models/bono.model';
 import { Component, OnInit } from '@angular/core';
 import { BonoService } from 'src/app/commons/services/bono.service';
 import { Router } from '@angular/router';
-import { CONSTANTS } from '../../../commons/services/constants'
+import { CONSTANTS } from '../../../commons/services/constants';
 
 
 @Component({
