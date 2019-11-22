@@ -11,14 +11,13 @@ import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 })
 export class CanjedBonusComponent implements OnInit {
 
-  bono: Bono = new Bono;
+  bono: Bono = new Bono();
   textPrincipal: string = null;
   platform = null;
 
-  constructor(private _bonusService: BonoService, private route: Router, private detectedPlatform: DetectedPlatform) {
-    this.bono = this._bonusService.getBono();
-    if (this.bono) {
-    } else {
+  constructor(private bonusService: BonoService, private route: Router, private detectedPlatform: DetectedPlatform) {
+    this.bono = this.bonusService.getBono();
+    if (!this.bono) {
       this.route.navigate(['/notFound']);
     }
   }
