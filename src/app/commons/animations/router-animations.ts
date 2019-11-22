@@ -5,128 +5,105 @@ import {
     style,
     animate,
     group,
-    animateChild
+    animateChild,
+    AnimationQueryMetadata,
+    AnimationMetadata
 } from '@angular/animations';
+
+const fix: AnimationMetadata[] = [
+    query(':leave, :enter',
+        style({ position: 'fixed', width: '100%' }),
+        { optional: true })
+];
+
+const animate1: AnimationMetadata[] = [
+    query(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('0.5s ease-in-out',
+            style({ transform: 'translateX(0%)' }))
+    ], { optional: true }),
+    query(':leave', [
+        style({ transform: 'translateX(0%)' }),
+        animate('0.5s ease-in-out',
+            style({ transform: 'translateX(-100%)' }))
+    ])
+];
+
+const animate2: AnimationMetadata[] = [
+    query(':enter', [
+        style({ transform: 'translateX(-100%)' }),
+        animate('0.5s ease-in-out',
+            style({ transform: 'translateX(0%)' }))
+    ], { optional: true }),
+    query(':leave', [
+        style({ transform: 'translateX(0%)' }),
+        animate('0.5s ease-in-out',
+            style({ transform: 'translateX(100%)' }))
+    ], { optional: true }),
+];
+
+const animate3: AnimationMetadata[] = [
+    query(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('0.5s ease-in-out',
+            style({ transform: 'translateX(0%)' }))
+    ], { optional: true }),
+    query(':leave', [
+        style({ transform: 'translateX(0%)' }),
+        animate('0.5s ease-in-out',
+            style({ transform: 'translateX(100%)' }))
+    ], { optional: true }),
+]
 
 export const slideInAnimation =
     trigger('routeAnimations', [
         transition('Home => *', [
-            query(':enter, :leave',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(-100%)' }))
-                ], { optional: true }),
+                animate1[0],
+                animate1[1],
             ])
         ]),
         transition('Detail => Home', [
-            query(':enter, :leave',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(-100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(100%)' }))
-                ], { optional: true }),
+                animate2[0],
+                animate2[1],
             ])
         ]),
         transition('Canje => Home', [
-            query(':enter, :leave',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(-100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(100%)' }))
-                ], { optional: true }),
+                animate2[0],
+                animate2[1],
             ])
         ]),
         transition('Home => Detail', [
-            query(':enter, :leave',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(100%)' }))
-                ], { optional: true }),
+                animate3[0],
+                animate3[1],
             ])
         ]),
         transition('Home => Canje', [
-            query(':enter, :leave',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(100%)' }))
-                ], { optional: true }),
+                animate3[0],
+                animate3[1],
             ])
         ]),
         transition('Detail => Canje', [
-            query(':enter, :leave',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(-100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(100%)' }))
-                ], { optional: true }),
+                animate2[0],
+                animate2[1],
             ])
         ]),
         transition('Canje => Detail', [
-            query(':leave, :enter',
-                style({ position: 'fixed', width: '100%' }),
-                { optional: true }),
+            fix[0],
             group([
-                query(':enter', [
-                    style({ transform: 'translateX(100%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(0%)' }))
-                ], { optional: true }),
-                query(':leave', [
-                    style({ transform: 'translateX(0%)' }),
-                    animate('0.5s ease-in-out',
-                        style({ transform: 'translateX(-100%)' }))
-                ], { optional: true }),
+                animate1[0],
+                animate1[1],
             ])
         ]),
     ]);
