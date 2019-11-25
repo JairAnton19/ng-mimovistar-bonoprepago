@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class GlobalService {
 
-  private REST_API_SERVER = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com';
+  private REST_API_SERVER = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com/';
 
   constructor(private http: HttpClient) { }
 

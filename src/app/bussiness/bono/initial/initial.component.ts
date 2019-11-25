@@ -33,9 +33,9 @@ export class InitialComponent implements OnInit {
   ngOnInit() {
 
     this.platform = this.detectedPlatform.detectPlatform();
-    this.globalService.globlalGet(`${CONSTANTS.endPointRecargaListPrices}/926192664`).subscribe((res: any) => {
-      console.log(res)
-    } )
+    this.globalService.globlalGet(`${CONSTANTS.endPointBonoList}`).subscribe((res: any) => {
+      console.log(res);
+    });
 
   }
 
@@ -73,7 +73,7 @@ export class InitialComponent implements OnInit {
     }
   }
 
-  public linkRouter(ruta: string){
+  public linkRouter(ruta: string) {
       this.route.navigate([ruta]);
       return true;
   }
