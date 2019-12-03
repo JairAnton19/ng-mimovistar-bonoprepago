@@ -4,15 +4,19 @@ import { InitialComponent } from './bussiness/bono/initial/initial.component';
 import { CanjedBonusComponent } from './bussiness/bono/canjed-bonus/canjed-bonus.component';
 import { BonoDetailComponent } from './bussiness/bono/bono-detail/bono-detail.component';
 import { ErrorComponent } from './bussiness/bono/error/error.component';
+import { BonoEmptyComponent } from './bussiness/bono/bono-empty/bono-empty.component';
+
+import { AuthGuard } from '../app/commons/guards/auth.guard';
 
 
 const routes: Routes = [
-  {path: 'bono-home/:parametro', component: InitialComponent, data: {animation: 'Home'}},
-  {path: 'canje', component: CanjedBonusComponent, data: {animation: 'Canje'} },
-  {path: 'bono-detail', component: BonoDetailComponent, data: {animation: 'Detail'} },
+  {path: 'bono-home', component: InitialComponent, data: {animation: 'Home'}},
+  {path: 'canje', component: CanjedBonusComponent, data: {animation: 'Canje'}, canActivate: [AuthGuard] },
+  {path: 'bono-detail', component: BonoDetailComponent, data: {animation: 'Detail'}, canActivate: [AuthGuard] },
   {path: 'notFound', component: ErrorComponent},
-  {path: '', redirectTo: 'bono-home/asd', pathMatch: 'full'},
-  {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
+  {path: 'bono-empty', component: BonoEmptyComponent},
+  {path: '', redirectTo: 'bono-home', pathMatch: 'full'},
+  {path: '**', redirectTo: 'notFound', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@ import { GlobalService } from './../../../commons/services/global.service';
 import { Component, OnInit } from '@angular/core';
 import { SwiperOptions } from 'swiper';
 import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
-import { CONSTANTS } from 'src/app/commons/services/constants';
+import { CONSTANTS } from 'src/app/commons/constants/constants';
 
 @Component({
   selector: 'app-bono-detail',
@@ -12,6 +12,7 @@ import { CONSTANTS } from 'src/app/commons/services/constants';
 
 export class BonoDetailComponent implements OnInit {
   platform = null;
+  permanencia;
   // slides = [
   //   {tiempoP: 'De 2 a 3 meses',
   //   plan: 'Minutos ilimitados a todo<br/><label class="labelMovistar">Movistar</label> por 1 día',
@@ -48,16 +49,31 @@ export class BonoDetailComponent implements OnInit {
 
   ngOnInit() {
     this.platform = this.detectedPlatform.detectPlatform();
-    this.globalService.globlalGet(`${CONSTANTS.endPointBonoList}`).subscribe((res: any) => {
+
+    this.getDetailBono();
+  }
+
+
+  public backHome() {
+    const url = sessionStorage.getItem('urlCallBack');
+    window.location.href = url;
+  }
+
+  public getDetailBono() {
+    const phone = sessionStorage.getItem('phone');
+    this.globalService.globlalGet(`${CONSTANTS.endPointBonosList}/${phone}`).subscribe((res: any) => {
       console.log(res);
-      if(res.promotionList){
-        if(res.promotionList.length > 0){
+      this.permanencia = res.permanencia;
+      if (res.promotionList) {
+        if (res.promotionList.length > 0) {
           res.promotionList.forEach(element => {
             this.slides.push({
               tiempoP: element.tiempop,
               plan: element.plan,
               mb: element.mb,
-              diasmb: element.diasmb
+              diasmb: element.diasmb,
+              tiempoS: element.tiempoS,
+              canje: element.canje
             });
           });
         }

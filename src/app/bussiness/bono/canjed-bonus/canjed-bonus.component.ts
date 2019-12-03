@@ -27,6 +27,11 @@ export class CanjedBonusComponent implements OnInit {
     this.platform = this.detectedPlatform.detectPlatform();
   }
 
+  public backHome() {
+    const url = sessionStorage.getItem('urlCallBack');
+    window.location.href = url;
+  }
+
   public linkRouters(ruta: string): void {
     this.route.navigate([ruta]);
   }

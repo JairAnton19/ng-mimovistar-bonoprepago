@@ -10,6 +10,7 @@ import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetectedPlatform } from './commons/services/detectedPlatform';
 import {HttpClientModule} from '@angular/common/http';
+import { BonoEmptyComponent } from './bussiness/bono/bono-empty/bono-empty.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
     CanjedBonusComponent,
     BonoDetailComponent,
     ErrorComponent,
+    BonoEmptyComponent,
   ],
   imports: [
     BrowserAnimationsModule,

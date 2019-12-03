@@ -14,7 +14,7 @@
 </div>
 
 <div class="align-bottom">
-    <div [ngClass]="buttonClases()">
+    <div [ngClass]="buttonClases()" (click)="backHome()">
         <label >{{platform == "android" ? "VOLVER A MI LÍNEA":"Volver a mi línea"}}</label>
     </div>
 </div>

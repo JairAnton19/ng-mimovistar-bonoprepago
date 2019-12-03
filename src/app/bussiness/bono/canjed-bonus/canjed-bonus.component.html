@@ -13,7 +13,7 @@
   </div>
   <div class="tdp-first-detail">
       <label class="tdp-text-detail" (click)="linkRouters('/bono-detail')">Conoce más sobre tus bonos</label>
-      <div [ngClass]="buttonClases()">
+      <div [ngClass]="buttonClases()" (click)="backHome()">
           <label >{{platform == "android" ? "VOLVER A MI LINEA":"Volver a mi linea"}}</label>
       </div>
   </div>

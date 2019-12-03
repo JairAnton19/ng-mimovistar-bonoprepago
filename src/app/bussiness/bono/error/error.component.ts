@@ -16,6 +16,11 @@ export class ErrorComponent implements OnInit {
     this.platform = this.detectedPlatform.detectPlatform();
   }
 
+  public backHome() {
+    const url = sessionStorage.getItem('urlCallBack');
+    window.location.href = url;
+  }
+
   public buttonClases() {
     return ['tdp-button', this.platform  === 'ios' ? 'fontIos' : 'fontAndroid'];
   }
