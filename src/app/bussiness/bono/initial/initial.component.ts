@@ -27,7 +27,7 @@ export class InitialComponent implements OnInit {
   //   { bonoPrepago: '<span class="labelNegrita">500 MB</span> por 1 día', type: 'internet', selected: false },
   // ];
   listOfBonos: any[] = [];
-
+  subscriberId: any;
 
   constructor(
     private bonoService: BonoService,
@@ -81,7 +81,7 @@ export class InitialComponent implements OnInit {
       const phone = sessionStorage.getItem('phone');
       this.cargando = true;
 
-      this.globalService.globlalGet(`${CONSTANTS.endPointCanjearBono}/${phone}/${id}`).subscribe(
+      this.globalService.globlalGet(`${CONSTANTS.endPointCanjearBono}/${id}/${this.subscriberId}`).subscribe(
         async (response: any) => {
           console.log(response);
           if (response) {
@@ -130,6 +130,7 @@ export class InitialComponent implements OnInit {
         this.globalService.setToken(getParams.response.params.jwt);
         sessionStorage.setItem('urlCallBack', response.responseData.callback_url);
         sessionStorage.setItem('phone', response.responseData.phone);
+        this.subscriberId = response.responseData.subscriberId;
         response.responseData.bonoList.forEach((element) => {
           this.listOfBonos.push({
             bonoId: element.id,
