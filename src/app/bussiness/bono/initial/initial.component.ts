@@ -141,7 +141,7 @@ export class InitialComponent implements OnInit {
       }  else {
         return this.router.navigate(['/bono-empty'], { replaceUrl: true });
       }
-    } else if (response.responseCode === '1') {
+    } else if (response.responseCode === '2') {
       console.log('BONOEMPTY')
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     } else {
