@@ -1,12 +1,15 @@
 <div class="initial-container">
-    <div class="contenedor">
+        <div class="cargando" *ngIf="cargando">
+                <img  src="assets/cargando.gif" alt="cargando-telefonica" width="38" height="38"/>
+            </div>
+    <div class="contenedor" >
 
         <div class="titlediv">
             <h1 class="title">¡A más tiempo con nosotros,</h1>
             <h1 class="title">más beneficios!</h1>
         </div>
 
-        <swiper [config]="config">
+        <swiper [config]="config" #swiper >
             <div class="swiper-wrapper">
                 <div class="swiper-slide" *ngFor="let item of slides">
                     <div [ngClass]="(item.canje==true)?'swiper-headblue':'swiper-head'">
@@ -42,4 +45,7 @@
         </div>
     </div>
 
+    
+
 </div>
+

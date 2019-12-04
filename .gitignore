@@ -45,5 +45,10 @@ testem.log
 .DS_Store
 Thumbs.db
 
+<<<<<<< HEAD
+#Sonar
+/.scannerwork
+=======
 #SonarQube
 /.scannerwork
+>>>>>>> 4305ae1d1c4a7ddbafd68c9422fecba07ad5b41f

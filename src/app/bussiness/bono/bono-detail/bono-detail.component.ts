@@ -1,5 +1,5 @@
 import { GlobalService } from './../../../commons/services/global.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SwiperOptions } from 'swiper';
 import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 import { CONSTANTS } from 'src/app/commons/constants/constants';
@@ -13,6 +13,9 @@ import { CONSTANTS } from 'src/app/commons/constants/constants';
 export class BonoDetailComponent implements OnInit {
   platform = null;
   permanencia;
+  cargando = true;
+  initial: any;
+  @ViewChild('swiper', {static: false}) swiperChild;
   // slides = [
   //   {tiempoP: 'De 2 a 3 meses',
   //   plan: 'Minutos ilimitados a todo<br/><label class="labelMovistar">Movistar</label> por 1 día',
@@ -26,7 +29,6 @@ export class BonoDetailComponent implements OnInit {
   // ];
   slides = [];
   config: SwiperOptions = {
-
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
@@ -63,17 +65,33 @@ export class BonoDetailComponent implements OnInit {
     const phone = sessionStorage.getItem('phone');
     this.globalService.globlalGet(`${CONSTANTS.endPointBonosList}/${phone}`).subscribe((res: any) => {
       console.log(res);
-      this.permanencia = res.permanencia;
+      // this.permanencia = res.permanencia;
+      this.permanencia = 21;
       if (res.promotionList) {
         if (res.promotionList.length > 0) {
-          res.promotionList.forEach(element => {
+          this.cargando = false;
+          res.promotionList.forEach((element , index) => {
+            console.log(index);
+            let isCanje = false;
+            if (this.permanencia > 0) {
+              const rango = element.rango.split(',');
+              console.log('PRUEBA');
+              console.log(this.swiperChild);
+              if (rango[0] >= this.permanencia && rango[1] <= this.permanencia ) {
+                isCanje = true;
+                this.swiperChild.swiper.slideTo(index);
+              } else if ( index === res.promotionList.length - 1 ) {
+                isCanje = true;
+                this.swiperChild.swiper.slideTo(index);
+              }
+            }
             this.slides.push({
               tiempoP: element.tiempop,
               plan: element.plan,
               mb: element.mb,
               diasmb: element.diasmb,
               tiempoS: element.tiempoS,
-              canje: element.canje
+              canje: isCanje
             });
           });
         }
