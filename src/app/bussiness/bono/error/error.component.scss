@@ -1,5 +1,6 @@
 .initial-container{
     max-height: 100vh;
+    height:calc(100vh - 58px);
     max-width: 100vw;
     padding:32px 16px 16px 16px;
     margin:0;
@@ -13,6 +14,10 @@
     align-items: center;
     display: flex;
     margin-bottom: 36px;
+}
+
+.tdp-text-detail{
+    text-decoration:none;
 }
 
 .gift-container label{

@@ -8,7 +8,7 @@ import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 @Component({
   selector: 'app-bono-empty',
   templateUrl: './bono-empty.component.html',
-  styleUrls: ['./bono-empty.component.scss', '../canjed-bonus/canjed-bonus.component.scss']
+  styleUrls: ['./bono-empty.component.scss',]
 })
 export class BonoEmptyComponent implements OnInit {
 

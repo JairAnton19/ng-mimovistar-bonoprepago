@@ -65,8 +65,8 @@ export class BonoDetailComponent implements OnInit {
     const phone = sessionStorage.getItem('phone');
     this.globalService.globlalGet(`${CONSTANTS.endPointBonosList}/${phone}`).subscribe((res: any) => {
       console.log(res);
-      // this.permanencia = res.permanencia;
-      this.permanencia = 21;
+      let validate = 0;
+      this.permanencia = res.permanencia;
       if (res.promotionList) {
         if (res.promotionList.length > 0) {
           this.cargando = false;
@@ -77,12 +77,17 @@ export class BonoDetailComponent implements OnInit {
               const rango = element.rango.split(',');
               console.log('PRUEBA');
               console.log(this.swiperChild);
-              if (rango[0] >= this.permanencia && rango[1] <= this.permanencia ) {
+              if (rango[0] <= this.permanencia && rango[1] >= this.permanencia) {
                 isCanje = true;
+                console.log('2');
                 this.swiperChild.swiper.slideTo(index);
-              } else if ( index === res.promotionList.length - 1 ) {
-                isCanje = true;
-                this.swiperChild.swiper.slideTo(index);
+                validate++;
+              } else if (index === res.promotionList.length - 1) {
+                if (validate === 0) {
+                  console.log('1')
+                  isCanje = true;
+                  this.swiperChild.swiper.slideTo(index);
+                }
               }
             }
             this.slides.push({

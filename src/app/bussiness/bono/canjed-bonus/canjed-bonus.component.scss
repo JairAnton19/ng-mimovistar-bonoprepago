@@ -4,6 +4,11 @@
     padding:40px 16px 16px 16px;
     box-sizing: border-box;
     min-height: 100vh;
+    height:calc(100vh - 58px);
+}
+
+.tdp-text-detail{
+    text-decoration:none;
 }
 
 .bonus-message{
