@@ -16,7 +16,7 @@ const helper = new JwtHelperService();
 })
 
 export class GlobalService {
-
+  // https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com/bonoprepago/v1
   private REST_API_SERVER = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com/';
 
   constructor(private active: ActivatedRoute, private http: HttpClient, private encryptService: EncryptService) { }
