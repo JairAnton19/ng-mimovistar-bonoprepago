@@ -34,6 +34,19 @@ export class GlobalService {
     }
   }
 
+  public globlalPost(url: string, body: any) {
+    try {
+      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body),
+        {
+          headers: new HttpHeaders(
+            {'Request-Id' : '1', 'Content-Type':'application/json'}),
+          responseType: 'json'}
+          );
+    } catch (error) {
+      return error;
+    }
+  }
+
 
   public setToken(tkn: any): void {
     sessionStorage.setItem('token', tkn);
