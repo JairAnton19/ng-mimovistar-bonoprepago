@@ -42,7 +42,7 @@ export class InitialComponent implements OnInit {
 
     this.platform = this.detectedPlatform.detectPlatform();
 
-    await this.peticionGet();
+    await this.peticionPost();
   }
 
 
@@ -80,8 +80,11 @@ export class InitialComponent implements OnInit {
       const id = this.bonoSelected.id;
       const phone = sessionStorage.getItem('phone');
       this.cargando = true;
-
-      this.globalService.globlalGet(`${CONSTANTS.endPointCanjearBono}/${id}/${this.subscriberId}`).subscribe(
+      const body = {
+        bonoId: sessionStorage.getItem('phone'),
+        subscriberId: this.bonoSelected.id
+      }
+      this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
           console.log(response);
           if (response) {
@@ -97,11 +100,14 @@ export class InitialComponent implements OnInit {
     return true;
   }
 
-  async peticionGet() {
+  async peticionPost() {
 
     const getParams = this.globalService.getParams(['jwt']);
     if (getParams.value) {
-      await this.globalService.globlalGet(`${CONSTANTS.endPointBonosHome}/${getParams.response.params.jwt}`).subscribe(
+      const body = {
+        encryptedToken: getParams.response.params.jwt
+      };
+      await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {
           console.log(response);
           // this.globalService.setToken(getParams.response.params.jwt);
@@ -114,6 +120,8 @@ export class InitialComponent implements OnInit {
         (error: any) => {
           console.log(error);
           this.router.navigate(['/notFound'], { replaceUrl: true });
+          console.log(body);
+
         }
       );
     } else {
@@ -143,7 +151,7 @@ export class InitialComponent implements OnInit {
         return this.router.navigate(['/bono-empty'], { replaceUrl: true });
       }
     } else if (response.responseCode === '2') {
-      console.log('BONOEMPTY')
+      console.log('BONOEMPTY');
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     } else {
      return this.router.navigate(['/notFound'], { replaceUrl: true });
