@@ -39,7 +39,7 @@ export class GlobalService {
       return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body),
         {
           headers: new HttpHeaders(
-            {'Request-Id' : '1', 'Content-Type':'application/json'}),
+            {'Request-Id' : '1', 'Content-Type': 'application/json'}),
           responseType: 'json'}
           );
     } catch (error) {
