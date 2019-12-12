@@ -91,7 +91,7 @@ export class InitialComponent implements OnInit {
         async (response: any) => {
           console.log(body);
           console.log(response);
-          if (response === '0') {
+          if (response.responseCode === '0') {
             this.cargando = false;
             this.router.navigate(['/canje']);
           } else {
