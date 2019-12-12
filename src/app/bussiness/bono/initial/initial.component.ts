@@ -52,6 +52,8 @@ export class InitialComponent implements OnInit {
     this.bonoSelected.name = this.listOfBonos[index].bonoPrepago;
     this.bonoSelected.type = this.listOfBonos[index].type;
     this.bonoSelected.id = this.listOfBonos[index].bonoId;
+    this.bonoSelected.subscriberId = this.listOfBonos[index].subscriberId;
+    console.log(this.bonoSelected)
 
     for (let i = 0; i < this.listOfBonos.length; i++) {
       if (i === index) {
@@ -78,18 +80,22 @@ export class InitialComponent implements OnInit {
     if (valor) {
       this.bonoService.setBono(this.bonoSelected);
       const id = this.bonoSelected.id;
+      const subcriberId = this.bonoSelected.subscriberId;
       const phone = sessionStorage.getItem('phone');
       this.cargando = true;
       const body = {
-        bonoId: sessionStorage.getItem('phone'),
-        subscriberId: this.bonoSelected.id
-      }
+        bonoId: this.bonoSelected.id,
+        subscriberId: this.bonoSelected.subscriberId,
+      };
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
+          console.log(body);
           console.log(response);
-          if (response) {
+          if (response.responseCode === '0') {
             this.cargando = false;
             this.router.navigate(['/canje']);
+          } else {
+            this.router.navigate(['/notFound'], { replaceUrl: true });
           }
         });
     }
@@ -137,14 +143,15 @@ export class InitialComponent implements OnInit {
         const getParams = this.globalService.getParams(['jwt']);
         this.globalService.setToken(getParams.response.params.jwt);
         sessionStorage.setItem('urlCallBack', response.responseData.callback_url);
-        sessionStorage.setItem('phone', response.responseData.phone);
+        sessionStorage.setItem('phone', response.responseData.phone); 
         this.subscriberId = response.responseData.subscriberId;
         response.responseData.bonoList.forEach((element) => {
           this.listOfBonos.push({
             bonoId: element.id,
             bonoPrepago: element.description,
             type: element.type,
-            selected: element.selected
+            selected: element.selected,
+            subscriberId: response.responseData.subscriberId
           });
         });
       }  else {
