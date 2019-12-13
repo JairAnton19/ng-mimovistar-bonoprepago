@@ -16,7 +16,7 @@ const helper = new JwtHelperService();
 })
 
 export class GlobalService {
-  private REST_API_SERVER = 'https://aks-mimovistar-ingress-prod.eastus2.cloudapp.azure.com/';
+  private REST_API_SERVER = 'https://aks-mimovistar-ingress-prod.eastus2.cloudapp.azure.com/bonoprepago/';
 
   constructor(private active: ActivatedRoute, private http: HttpClient, private encryptService: EncryptService) { }
 
@@ -38,7 +38,7 @@ export class GlobalService {
       return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body),
         {
           headers: new HttpHeaders(
-            {'Request-Id' : '1', 'Content-Type':'application/json'}),
+            {'Request-Id' : '1', 'Content-Type': 'application/json'}),
           responseType: 'json'}
           );
     } catch (error) {
