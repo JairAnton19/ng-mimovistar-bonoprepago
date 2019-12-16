@@ -50,10 +50,10 @@ export class BonoDetailComponent implements OnInit {
 
 
   constructor(
-    private detectedPlatform: DetectedPlatform, 
+    private detectedPlatform: DetectedPlatform,
     private globalService: GlobalService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.platform = this.detectedPlatform.detectPlatform();
@@ -75,33 +75,32 @@ export class BonoDetailComponent implements OnInit {
     this.globalService.globlalPost(`${CONSTANTS.endPointBonosList}`, body).subscribe((res: any) => {
       console.log(res);
       let validate = 0;
-      this.permanencia = res.permanencia;
-      if (res.permanencia !== '1') {
-
-
+      let value = 0;
+      this.permanencia = parseInt(res.permanencia,10);
+      //this.permanencia = 100;
+      if (this.permanencia !== 1) {
         if (res.promotionList) {
           if (res.promotionList.length > 0) {
             this.cargando = false;
             res.promotionList.forEach((element, index) => {
               console.log(index);
+              console.log(res.promotionList.length-1)
               let isCanje = false;
+              const rango = element.rango.split(',');
+
               if (this.permanencia > 0) {
-                const rango = element.rango.split(',');
-                console.log('PRUEBA');
-                console.log(this.swiperChild);
                 if (rango[0] <= this.permanencia && rango[1] >= this.permanencia) {
                   isCanje = true;
-                  console.log('2');
+                  console.log('2')
                   this.swiperChild.swiper.slideTo(index);
-                  validate++;
-                } else if (index === res.promotionList.length - 1) {
-                  if (validate === 0) {
-                    console.log('1')
-                    isCanje = true;
-                    this.swiperChild.swiper.slideTo(index);
-                  }
+                } else if (res.promotionList.length-1 === index && rango[0]<= this.permanencia) {
+                  console.log('1')
+                  isCanje = true;
+                  this.swiperChild.swiper.slideTo(index);
+
                 }
               }
+
               this.slides.push({
                 tiempoP: element.tiempop,
                 plan: element.plan,
@@ -110,6 +109,7 @@ export class BonoDetailComponent implements OnInit {
                 tiempoS: element.tiempoS,
                 canje: isCanje
               });
+
             });
           }
         }
