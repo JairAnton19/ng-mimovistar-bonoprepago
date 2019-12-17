@@ -74,10 +74,8 @@ export class BonoDetailComponent implements OnInit {
     };
     this.globalService.globlalPost(`${CONSTANTS.endPointBonosList}`, body).subscribe((res: any) => {
       console.log(res);
-      let validate = 0;
-      let value = 0;
-      this.permanencia = parseInt(res.permanencia,10);
-      //this.permanencia = 100;
+      this.permanencia = parseInt(res.permanencia, 10);
+      // this.permanencia = 100;
       if (this.permanencia !== 1) {
         if (res.promotionList) {
           if (res.promotionList.length > 0) {
@@ -91,10 +89,10 @@ export class BonoDetailComponent implements OnInit {
               if (this.permanencia > 0) {
                 if (rango[0] <= this.permanencia && rango[1] >= this.permanencia) {
                   isCanje = true;
-                  console.log('2')
+                  console.log('2');
                   this.swiperChild.swiper.slideTo(index);
-                } else if (res.promotionList.length-1 === index && rango[0]<= this.permanencia) {
-                  console.log('1')
+                } else if (res.promotionList.length - 1 === index && rango[0] <= this.permanencia) {
+                  console.log('1');
                   isCanje = true;
                   this.swiperChild.swiper.slideTo(index);
 
