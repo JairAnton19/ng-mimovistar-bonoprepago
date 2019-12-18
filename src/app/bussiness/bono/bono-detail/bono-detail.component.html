@@ -35,9 +35,9 @@
 
     </div>
 
-    <div class="align-bottom">
-        <div class="adicional">
-            <img src="../../../../assets/images/icons/circleAlert.png" width="22" height="22" /> <label>Tienes {{permanencia}} meses
+    <div class="align-bottom" >
+        <div class="adicional"   *ngIf="permanencia; thenBlock ">
+            <img src="../../../../assets/images/icons/circleAlert.png" width="22" height="22" /> <label #thenBlock>Tienes {{permanencia}} meses
                 con nosotros</label>
         </div>
         <div [ngClass]="buttonClases()" (click)="backHome()" >  
