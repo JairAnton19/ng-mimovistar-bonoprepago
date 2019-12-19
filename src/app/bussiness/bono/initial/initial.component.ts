@@ -136,11 +136,11 @@ export class InitialComponent implements OnInit {
   }
 
   async validation(response: any) {
+    const getParams = this.globalService.getParams(['jwt']);
     if (response.responseCode === '0') {
       // SETEAMOS VALORES
       // this.phone = response.responseData.phone;
       if (response.responseData.bonoList.length > 0) {
-        const getParams = this.globalService.getParams(['jwt']);
         this.globalService.setToken(getParams.response.params.jwt);
         sessionStorage.setItem('urlCallBack', response.responseData.callback_url);
         sessionStorage.setItem('phone', response.responseData.phone); 
@@ -159,6 +159,7 @@ export class InitialComponent implements OnInit {
       }
     } else if (response.responseCode === '2') {
       console.log('BONOEMPTY');
+      this.globalService.setToken(getParams.response.params.jwt);
       sessionStorage.setItem('phone', response.responseData.phone); 
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     } else {

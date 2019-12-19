@@ -57,7 +57,7 @@ export class BonoDetailComponent implements OnInit {
 
   ngOnInit() {
     this.platform = this.detectedPlatform.detectPlatform();
-
+    console.log(sessionStorage.getItem('phone'))
     this.getDetailBono();
   }
 
