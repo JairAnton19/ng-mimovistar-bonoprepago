@@ -159,6 +159,7 @@ export class InitialComponent implements OnInit {
       }
     } else if (response.responseCode === '2') {
       console.log('BONOEMPTY');
+      sessionStorage.setItem('phone', response.responseData.phone); 
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     } else {
      return this.router.navigate(['/notFound'], { replaceUrl: true });
