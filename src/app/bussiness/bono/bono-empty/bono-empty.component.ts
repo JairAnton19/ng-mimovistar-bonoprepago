@@ -30,8 +30,9 @@ export class BonoEmptyComponent implements OnInit {
     window.location.href = url;
   }
 
-  public linkRouters(ruta: string): void {
+  public linkRouter(ruta: string) {
     this.route.navigate([ruta]);
+    return true;
   }
 
 }
