@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sonar": "sonar-scanner"
-  },
+    "sonar": "sonar-scanner",
+    "build-prod": "ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer"
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.12",
