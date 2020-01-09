@@ -9,8 +9,14 @@ import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 })
 export class ErrorComponent implements OnInit {
 
+  callbackUrl;
   platform = null;
-  constructor(private detectedPlatform: DetectedPlatform) { }
+  
+  constructor(private detectedPlatform: DetectedPlatform) { 
+    
+    this.callbackUrl  = sessionStorage.getItem('urlCallBack') === 'null' ? false : true;
+    
+  }
 
   ngOnInit() {
     this.platform = this.detectedPlatform.detectPlatform();
