@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetectedPlatform } from './commons/services/detectedPlatform';
 import {HttpClientModule} from '@angular/common/http';
 import { BonoEmptyComponent } from './bussiness/bono/bono-empty/bono-empty.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizationInterceptor } from './commons/helpers/authorization.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,14 @@ import { BonoEmptyComponent } from './bussiness/bono/bono-empty/bono-empty.compo
     Angular2UsefulSwiperModule,
     HttpClientModule
   ],
-  providers: [DetectedPlatform],
+  //providers: [DetectedPlatform],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
