@@ -116,6 +116,7 @@ export class InitialComponent implements OnInit {
       await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {
           console.log(response);
+          sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
           // this.globalService.setToken(getParams.response.params.jwt);
           await this.validation(response);
 
@@ -142,7 +143,6 @@ export class InitialComponent implements OnInit {
       if (response.responseData.bonoList.length > 0) {
         const getParams = this.globalService.getParams(['jwt']);
         this.globalService.setToken(getParams.response.params.jwt);
-        sessionStorage.setItem('urlCallBack', response.responseData.callback_url);
         sessionStorage.setItem('phone', response.responseData.phone); 
         this.subscriberId = response.responseData.subscriberId;
         response.responseData.bonoList.forEach((element) => {

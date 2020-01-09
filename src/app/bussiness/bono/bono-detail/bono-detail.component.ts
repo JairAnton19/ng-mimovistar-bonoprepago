@@ -4,6 +4,8 @@ import { SwiperOptions } from 'swiper';
 import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 import { CONSTANTS } from 'src/app/commons/constants/constants';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+
 
 
 @Component({
@@ -52,7 +54,8 @@ export class BonoDetailComponent implements OnInit {
   constructor(
     private detectedPlatform: DetectedPlatform,
     private globalService: GlobalService,
-    private router: Router
+    private router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -65,6 +68,10 @@ export class BonoDetailComponent implements OnInit {
   public backHome() {
     const url = sessionStorage.getItem('urlCallBack');
     window.location.href = url;
+  }
+
+  public backClicked() {
+    this._location.back();
   }
 
   public getDetailBono() {
