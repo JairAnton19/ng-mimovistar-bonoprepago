@@ -110,6 +110,7 @@ export class InitialComponent implements OnInit {
 
     const getParams = this.globalService.getParams(['jwt']);
     if (getParams.value) {
+      this.globalService.getUrlNovum(getParams.response.params.jwt);
       const body = {
         encryptedToken: getParams.response.params.jwt
       };
