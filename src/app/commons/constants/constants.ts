@@ -6,6 +6,4 @@ const CONSTANTS = {
     endPointCanjearBono: 'bonoprepago/v1/canjearBono'
 };
 
-
-
 export { BASE_URL, CONSTANTS };
