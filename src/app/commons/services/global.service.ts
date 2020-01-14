@@ -62,6 +62,12 @@ export class GlobalService {
     return decodedToken;
   }
 
+  public getUrlNovum(token:any){
+    let tokenOK = this.jwt(token)
+    if(isNullOrUndefined(tokenOK)){ return false }
+    sessionStorage.setItem("urlCallBack",tokenOK.callback_url)
+  }
+
   public getToken(): boolean {
     const token = sessionStorage.getItem('token');
     const getDate = new Date();
