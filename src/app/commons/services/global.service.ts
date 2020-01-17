@@ -25,8 +25,7 @@ export class GlobalService {
     try {
       return this.http.get(`${this.REST_API_SERVER}/${url}`,
         {
-          headers: new HttpHeaders({ 'Request-Id': '1' })
-          , responseType: 'json'
+           responseType: 'json'
         });
     } catch (error) {
       return error;
@@ -37,8 +36,6 @@ export class GlobalService {
     try {
       return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body),
         {
-          headers: new HttpHeaders(
-            {'Request-Id' : '1', 'Content-Type': 'application/json'}),
           responseType: 'json'}
           );
     } catch (error) {
