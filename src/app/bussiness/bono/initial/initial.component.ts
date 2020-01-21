@@ -54,6 +54,7 @@ export class InitialComponent implements OnInit {
     this.bonoSelected.id = this.listOfBonos[index].bonoId;
     this.bonoSelected.subscriberId = this.listOfBonos[index].subscriberId;
     this.bonoSelected.trackingCD = this.listOfBonos[index].trackingCD;
+
     console.log(this.bonoSelected)
 
     for (let i = 0; i < this.listOfBonos.length; i++) {
@@ -80,9 +81,6 @@ export class InitialComponent implements OnInit {
   public sendData(valor: boolean): void {
     if (valor) {
       this.bonoService.setBono(this.bonoSelected);
-      const id = this.bonoSelected.id;
-      const subcriberId = this.bonoSelected.subscriberId;
-      const phone = sessionStorage.getItem('phone');
       this.cargando = true;
       const body = {
         bonoId: this.bonoSelected.id,
@@ -156,7 +154,7 @@ export class InitialComponent implements OnInit {
             type: element.type,
             selected: element.selected,
             subscriberId: response.responseData.subscriberId,
-            trackingCD: response.responseData.responseTrackingCD
+            trackingCD: element.responseTrackingCD
           });
         });
       }  else {
