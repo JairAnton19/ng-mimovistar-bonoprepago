@@ -86,6 +86,7 @@ export class InitialComponent implements OnInit {
       const body = {
         bonoId: this.bonoSelected.id,
         subscriberId: this.bonoSelected.subscriberId,
+        descripcion: this.bonoSelected.name,
       };
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
