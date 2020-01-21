@@ -53,6 +53,7 @@ export class InitialComponent implements OnInit {
     this.bonoSelected.type = this.listOfBonos[index].type;
     this.bonoSelected.id = this.listOfBonos[index].bonoId;
     this.bonoSelected.subscriberId = this.listOfBonos[index].subscriberId;
+    this.bonoSelected.trackingCD = this.listOfBonos[index].trackingCD;
     console.log(this.bonoSelected)
 
     for (let i = 0; i < this.listOfBonos.length; i++) {
@@ -87,6 +88,7 @@ export class InitialComponent implements OnInit {
         bonoId: this.bonoSelected.id,
         subscriberId: this.bonoSelected.subscriberId,
         descripcion: this.bonoSelected.name,
+        responseTrackingCD: this.bonoSelected.trackingCD,
       };
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
@@ -153,7 +155,8 @@ export class InitialComponent implements OnInit {
             bonoPrepago: element.description,
             type: element.type,
             selected: element.selected,
-            subscriberId: response.responseData.subscriberId
+            subscriberId: response.responseData.subscriberId,
+            trackingCD: response.responseData.responseTrackingCD
           });
         });
       }  else {

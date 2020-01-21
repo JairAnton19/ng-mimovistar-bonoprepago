@@ -3,4 +3,5 @@ export class Bono {
     type: string;
     id: string;
     subscriberId: string;
+    trackingCD: string;
 }
