@@ -36,16 +36,16 @@
     </div>
 
     <div class="align-bottom" >
-        <div class="adicional"   *ngIf="permanencia">
+        <!-- <div class="adicional"   *ngIf="permanencia">
             <img src="../../../../assets/images/icons/circleAlert.png" width="22" height="22" /> <label>Tienes {{permanencia}} meses
                 con nosotros</label>
-        </div>
-        <div [ngClass]="buttonClases()" (click)="backClicked()" >  
+        </div> -->
+        <div [ngClass]="buttonClases()" (click)="backClicked()" >
             <label>{{platform == "android" ? "REGRESAR":"REGRESAR"}}</label>
         </div>
     </div>
 
-    
+
 
 </div>
 

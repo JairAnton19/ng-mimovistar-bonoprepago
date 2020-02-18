@@ -93,18 +93,18 @@ export class BonoDetailComponent implements OnInit {
               let isCanje = false;
               const rango = element.rango.split(',');
 
-              if (this.permanencia > 0) {
-                if (rango[0] <= this.permanencia && rango[1] >= this.permanencia) {
-                  isCanje = true;
-                  console.log('2');
-                  this.swiperChild.swiper.slideTo(index);
-                } else if (res.promotionList.length - 1 === index && rango[0] <= this.permanencia) {
-                  console.log('1');
-                  isCanje = true;
-                  this.swiperChild.swiper.slideTo(index);
+              // if (this.permanencia > 0) {
+              //   if (rango[0] <= this.permanencia && rango[1] >= this.permanencia) {
+              //     // isCanje = true;
+              //     console.log('2');
+              //     this.swiperChild.swiper.slideTo(index);
+              //   } else if (res.promotionList.length - 1 === index && rango[0] <= this.permanencia) {
+              //     console.log('1');
+              //     // isCanje = true;
+              //     this.swiperChild.swiper.slideTo(index);
 
-                }
-              }
+              //   }
+              // }
 
               this.slides.push({
                 tiempoP: element.tiempop,
