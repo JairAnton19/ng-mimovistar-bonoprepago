@@ -1,15 +1,13 @@
 <div class="empty-bonus-container">
     <div class="canjed-bonus-content"*ngIf="bono">
-    
+
     <img
         src="assets/images/icons/regalo.svg"
         alt="bono-regalo-movistar"
       />
-    
+
       <span style="margin-bottom: 20px;">Tu próximo bono estará disponible el siguiente mes.</span>
-      <!-- <p class="bonus-message" >¡Has recargado tu bono <font class="bonus-name">{{bono.name}}</font> con exito!</p> -->
       <div [innerHTML]=textPrincipal></div>
-      <!--<p style="margin-bottom: 40px; text-align: center;">Tu próximo bono estará disponible el siguiente mes.</p> -->
     </div>
     <div class="tdp-first-detail">
         <label class="tdp-text-detail" (click)="linkRouter('/bono-detail')">Conoce más sobre tus bonos</label>
@@ -17,5 +15,5 @@
             <label >{{platform == "android" ? "VOLVER A MI LINEA":"Volver a mi linea"}}</label>
         </div>
     </div>
-     
+
   </div>
