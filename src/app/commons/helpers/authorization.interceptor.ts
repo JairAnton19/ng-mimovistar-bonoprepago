@@ -22,7 +22,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     
     request = request.clone({
       setHeaders: {
-        'Authorization': `Basic ${this.dev}`,
+        'Authorization': `Basic ${this.prod}`,
         'Content-Type': 'application/json'
       }
     });
