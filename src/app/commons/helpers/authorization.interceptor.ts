@@ -18,16 +18,16 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   constructor() {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
-    
+
+
     request = request.clone({
       setHeaders: {
-        'Authorization': `Basic ${this.prod}`,
+        'Authorization': `Basic ${this.dev}`,
         'Content-Type': 'application/json'
       }
     });
 
-    
+
     return next.handle(request);
   }
 }
