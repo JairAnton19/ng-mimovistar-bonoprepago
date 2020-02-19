@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 
-// const apiURL: string = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com';
+// const apiURL: string = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com/';
 
 const helper = new JwtHelperService();
 @Injectable({
@@ -16,7 +16,7 @@ const helper = new JwtHelperService();
 })
 
 export class GlobalService {
-  private REST_API_SERVER = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com/bonoprepago/';
+  private REST_API_SERVER = 'https://aks-mimovistar-ingress-dev.eastus2.cloudapp.azure.com/';
 
   constructor(private active: ActivatedRoute, private http: HttpClient, private encryptService: EncryptService) { }
 
