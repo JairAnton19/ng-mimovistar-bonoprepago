@@ -1,4 +1,4 @@
-const BASE_URL = 'https://aks-mimovistar-ingress-cert-2.eastus2.cloudapp.azure.com';
+const BASE_URL = 'https://aks-mimovistar-ingress-cert.eastus2.cloudapp.azure.com';
 
 const CONSTANTS = {
     endPointBonosList: 'bonoprepago/v1/getPromotionsByTime',
