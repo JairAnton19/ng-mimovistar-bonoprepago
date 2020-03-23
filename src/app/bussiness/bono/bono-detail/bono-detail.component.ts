@@ -83,8 +83,7 @@ export class BonoDetailComponent implements OnInit {
       console.log(res);
       this.permanencia = parseInt(res.permanencia, 10);
       // this.permanencia = 100;
-      if (this.permanencia !== 1) {
-        if (res.promotionList) {
+              if (res.promotionList) {
           if (res.promotionList.length > 0) {
             this.cargando = false;
             res.promotionList.forEach((element, index) => {
@@ -118,10 +117,6 @@ export class BonoDetailComponent implements OnInit {
             });
           }
         }
-      } else {
-        this.cargando = false;
-        return this.router.navigate(['/bono-empty'], { replaceUrl: true });
-      }
     });
   }
 
