@@ -51,6 +51,7 @@
     "sonar-scanner": "^3.1.0",
     "ts-node": "~7.0.0",
     "tslint": "^5.11.0",
-    "typescript": "~3.4.0"
+    "typescript": "~3.4.0",
+    "@babel/compat-data": "~7.8.0"
   }
 }
