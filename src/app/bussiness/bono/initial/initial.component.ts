@@ -110,15 +110,25 @@ export class InitialComponent implements OnInit {
   async peticionPost() {
 
     const getParams = this.globalService.getParams(['jwt']);
-    console.log('Hola mundo');
+
     if (getParams.value) {
-      this.globalService.getUrlNovum(getParams.response.params.jwt);
+      var jwtParams = this.globalService.getUrlNovum(getParams.response.params.jwt);
       const body = {
         encryptedToken: getParams.response.params.jwt
       };
+      console.log(jwtParams)
+
+      if(!jwtParams){
+        return this.router.navigate(['/bono-empty'], { replaceUrl: true });
+      }
+      else {
+        if(jwtParams.payload && (jwtParams.payload.line_type.includes('Postpago') || jwtParams.payload.line_type.includes('Hogar'))){
+          return this.router.navigate(['/bono-inital'], { replaceUrl: true });
+        }
+      }
+
       await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {
-          console.log(response);
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
           // this.globalService.setToken(getParams.response.params.jwt);
           await this.validation(response);

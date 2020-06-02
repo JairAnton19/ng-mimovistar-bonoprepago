@@ -55,7 +55,6 @@ export class GlobalService {
     } catch (error) {
       decodedToken = null;
     }
-    console.log(decodedToken);
     return decodedToken;
   }
 
@@ -63,6 +62,7 @@ export class GlobalService {
     let tokenOK = this.jwt(token)
     if(isNullOrUndefined(tokenOK)){ return false }
     sessionStorage.setItem("urlCallBack",tokenOK.callback_url)
+    return tokenOK
   }
 
   public getToken(): boolean {
