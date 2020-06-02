@@ -63,8 +63,7 @@ export class BonoInitalComponent implements OnInit {
     return true;
   }
   
-  public  onKeypressEvent(event: any){
-    console.log(event.target.value);
+  public  onKeydown(event: any){
     if(this.validateEmail(event.target.value)){
       this.errorMessage = false;
     }
