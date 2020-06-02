@@ -384,6 +384,20 @@ input[type="text"] {
     outline-color: transparent;
 }
 
+.txtError p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+  align-items: left;
+  margin-top: 0px;
+  padding-top: 0px;
+  text-align: left;
+  color: #f80a0a;
+}
+
+
 .txtAllTyC {
     font-family: Roboto;
     font-style: normal;
@@ -393,6 +407,7 @@ input[type="text"] {
     align-items: center;
     text-align: center;
     color: #757575;
+    margin-top: 20px;
 }
 
 .txtAllTyC a {
