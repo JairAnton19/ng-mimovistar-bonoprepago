@@ -11,6 +11,7 @@ export class BonoInitalComponent implements OnInit {
   email: string;
   errorMessage = false;
   messageError: string = null;
+  messageDivError: string = null;
 
   constructor(private route: Router) {
 
@@ -23,7 +24,7 @@ export class BonoInitalComponent implements OnInit {
     if(this.validateEmail(email)){
       this.errorMessage = false;
       // falta llamar al servicio
-      this.route.navigate(['/bono-okm'])
+      this.route.navigate(['/bono-okm']);
     }
     else {
       this.errorMessage = true;
@@ -43,22 +44,33 @@ export class BonoInitalComponent implements OnInit {
     this.route.navigate([ruta]);
     return true;
   }
-
+ 
   public validateEmail(email: string):boolean {
     'use strict';
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
     if(email === ''){
       this.messageError = 'Ingresa tu correo electrónico.';
+      this.messageDivError="errorClass";
       return false;
     }
 
     if(!email.match(emailRegex)){
       this.messageError = 'El correo electrónico no es correcto.';
+      this.messageDivError="errorClass";
       return false;
     }
-
+    this.messageDivError="";
     return true;
+  }
+  
+  public  onKeypressEvent(event: any){
+    console.log(event.target.value);
+    if(this.validateEmail(event.target.value)){
+      this.errorMessage = false;
+    }
+    else {
+      this.errorMessage = true;
+    }
   }
 
 }
