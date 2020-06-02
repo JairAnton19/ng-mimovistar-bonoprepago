@@ -35,8 +35,6 @@ const routes: Routes = [
   {path: 'bono-error', component: BonoErrorComponent},
   {path: 'bono-okm', component: BonoOkmComponent},
   {path: 'bono-okh', component: BonoOkhComponent},
-  {path: '', redirectTo: 'bono-home', pathMatch: 'full'},
-  /*{path: '**', redirectTo: 'notFound', pathMatch: 'full'},*/
   {path: 'bono-inital', component: BonoInitalComponent},
   {path: 'bono-canjed', component: BonoCanjedComponent},
   {path: 'bono-terms', component: BonoTermsComponent},
@@ -47,6 +45,8 @@ const routes: Routes = [
   {path: 'bono-error', component: BonoErrorComponent},
   {path: 'bono-okm', component: BonoOkmComponent},
   {path: 'bono-okh', component: BonoOkhComponent},
+  {path: '', redirectTo: 'bono-home', pathMatch: 'full'},
+  {path: '**', redirectTo: 'notFound', pathMatch: 'full'},
 ];
 
 @NgModule({
