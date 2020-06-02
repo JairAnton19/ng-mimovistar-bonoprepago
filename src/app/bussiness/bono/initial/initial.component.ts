@@ -167,7 +167,7 @@ export class InitialComponent implements OnInit {
       console.log(response.responseData.phone);
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     } else {
-     return this.router.navigate(['/notFound'], { replaceUrl: true });
+     return this.router.navigate(['/bono-inital'], { replaceUrl: true });
     }
   }
 
