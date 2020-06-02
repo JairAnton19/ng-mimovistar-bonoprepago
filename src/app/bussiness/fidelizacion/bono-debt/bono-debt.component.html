@@ -1,0 +1,20 @@
+<div class="pageAll-container">
+    <div class="pageAll-content">
+        <img src="assets/images/icons/iconStop.svg" class="imgOnlyTall" />
+        <div class="titlediv">
+            <div class="pageAllTitle20_Lh26">Para canjear el bono, debes<br>estar al día en tus recibos </div>
+        </div>
+        <div class="subtitlediv">
+            <div class="pageAllTitle16">
+                ¡No te lo pierdas! </div>
+
+        </div>
+
+    </div>
+    <div class="tdp-first-detail">
+        <label class="tdp-text-detail"></label>
+        <div [ngClass]="buttonClases()" (click)="backHome()">
+            <label>{{platform == "android" ? "VOLVER A MI LINEA":"VOLVER A MI LINEA"}}</label>
+        </div>
+    </div>
+</div>

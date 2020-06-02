@@ -1,0 +1,20 @@
+<div class="pageAll-container">
+    <div class="pageAll-content">
+        <img src="assets/images/icons/iconCheck.svg" class="imgOnlyTall" />
+        <div class="titlediv">
+            <div class="pageAllTitle20_B500">Canje exitoso </div>
+        </div>
+        <div class="subtitlediv">
+            <div class="pageAllTitle14">
+                Te enviaremos en unos instante un SMS <br> con la activación de tu <strong class="txtImportant">Bono Fidelización.</strong>
+            </div>
+        </div>
+
+    </div>
+    <div class="tdp-first-detail">
+        <label class="tdp-text-detail"></label>
+        <div [ngClass]="buttonClases()" (click)="backHome()">
+            <label>{{platform == "android" ? "VOLVER A MI LINEA":"VOLVER A MI LINEA"}}</label>
+        </div>
+    </div>
+</div>

@@ -13,6 +13,16 @@ import {HttpClientModule} from '@angular/common/http';
 import { BonoEmptyComponent } from './bussiness/bono/bono-empty/bono-empty.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizationInterceptor } from './commons/helpers/authorization.interceptor';
+import { BonoInitalComponent } from './bussiness/fidelizacion/bono-inital/bono-inital.component';
+import { BonoCanjedComponent } from './bussiness/fidelizacion/bono-canjed/bono-canjed.component';
+import { BonoTermsComponent } from './bussiness/fidelizacion/bono-terms/bono-terms.component';
+import { BonoDebtComponent } from './bussiness/fidelizacion/bono-debt/bono-debt.component';
+import { BonoEndComponent } from './bussiness/fidelizacion/bono-end/bono-end.component';
+import { BonoMaxComponent } from './bussiness/fidelizacion/bono-max/bono-max.component';
+import { BonoTechnicalComponent } from './bussiness/fidelizacion/bono-technical/bono-technical.component';
+import { BonoErrorComponent } from './bussiness/fidelizacion/bono-error/bono-error.component';
+import { BonoOkmComponent } from './bussiness/fidelizacion/bono-okm/bono-okm.component';
+import { BonoOkhComponent } from './bussiness/fidelizacion/bono-okh/bono-okh.component';
 
 
 @NgModule({
@@ -23,6 +33,16 @@ import { AuthorizationInterceptor } from './commons/helpers/authorization.interc
     BonoDetailComponent,
     ErrorComponent,
     BonoEmptyComponent,
+    BonoInitalComponent,
+    BonoCanjedComponent,
+    BonoTermsComponent,
+    BonoDebtComponent,
+    BonoEndComponent,
+    BonoMaxComponent,
+    BonoTechnicalComponent,
+    BonoErrorComponent,
+    BonoOkmComponent,
+    BonoOkhComponent,
   ],
   imports: [
     BrowserAnimationsModule,

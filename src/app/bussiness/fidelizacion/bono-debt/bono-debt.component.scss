@@ -1,0 +1,432 @@
+.pageAll-container {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 16px 16px 16px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    height: calc(100vh - 58px);
+}
+
+.pageAll-content {
+    display: flex;
+    flex-direction: column;
+    flex: 9;
+    justify-content: center;
+}
+
+img {
+    transform: none;
+}
+
+
+/*Contenedor subtitulos*/
+
+.subtitlediv {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+
+/*Contenedor titulo*/
+
+.titlediv {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+
+/*Subtitulo 1*/
+
+.pageAllSubTitleA {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #757575;
+}
+
+.pageAllSubTitleA strong {
+    color: #2A2A3C;
+    font-weight: bold;
+}
+
+
+/*Subtitulo 2*/
+
+.pageAllSubTitleB {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #2A2A3C;
+}
+
+
+/*Titulo font 16*/
+
+.pageAllTitle16 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    /* or 125% */
+    text-align: center;
+    color: #757575;
+}
+
+
+/*Titulo font 14*/
+
+.pageAllTitle14 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #757575;
+}
+
+.txtImportant {
+    color: #2A2A3C;
+}
+
+.imgOnlyTall {
+    margin-bottom: 39px;
+}
+
+
+/*Titulo font 14 - Bold 300*/
+
+.pageAllTitle14_B300 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #2A2A3C;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+
+/*Titulo font 14 - Bold*/
+
+.pageAllTitle14_Bold {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #2A2A3C;
+}
+
+
+/*Titulo font 28 - Bold500*/
+
+.pageAllTitle28_B500 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 24px;
+    text-align: center;
+    color: #2A2A3C;
+}
+
+
+/*Titulo font 18*/
+
+.pageAllTitle18 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #2A2A3C;
+    margin: 0 auto;
+}
+
+
+/*Titulo font 20*/
+
+.pageAllTitle20 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #2A2A3C;
+    margin: 0 auto;
+}
+
+
+/*Titulo font 18 - Bold 500*/
+
+.pageAllTitle20_B500 {
+    font-weight: 500;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #2A2A3C;
+    margin: 0 auto;
+}
+
+
+/*ContainerStop*/
+
+.containerStop {
+    background: rgba(244, 61, 20, 0.15);
+}
+
+
+/*Titulo font 18 - LH 26 - Bold 500*/
+
+.pageAllTitle20_Lh26 {
+    font-weight: normal;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    color: #2A2A3C;
+    margin: 0 auto;
+}
+
+
+/*Top title*/
+
+.toptitlediv {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex: 1;
+    min-height: 100px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+}
+
+.topTitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.45px;
+    color: #757575;
+    margin-bottom: 31px;
+}
+
+.topSubTitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2A2A3C;
+    margin-bottom: 18px;
+}
+
+
+/*Botón nuevo*/
+
+.btn-receipts.tdp-button {
+    background-color: #ffffff;
+    border: 1px solid #5bc500;
+    margin-top: 16px;
+    color: #5bc500;
+}
+
+
+/*Botón nuevo opaco*/
+
+.btn-receipts.tdp-button.tdp-button-opaque {
+    border: 1px solid #cdedb2;
+    color: #cdedb2;
+}
+
+
+/*Spinner*/
+
+.pageAll-container.initial-container {
+    padding: 0px 0px 0px 0px;
+}
+
+.cargandoInitial {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 1);
+    flex-direction: column;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999999999;
+}
+
+.cargandoInitial p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #999999;
+}
+
+.topTitle16 {
+    max-width: 328px;
+    height: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #2A2A3C;
+    margin: 27px auto 29px auto;
+}
+
+.pageAll-container.initial-container .pageAll-content {
+    margin: 0 auto;
+}
+
+.containerBonoTime {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #9F591F;
+    min-height: 56px;
+    margin: 0 auto 31px auto;
+}
+
+.containerBono {
+    min-width: 232px;
+    height: 185px;
+    background: #EEEEEE;
+    border: 0.5px solid #DDDDDD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.containerBono.bnOk {
+    min-height: 249px;
+    min-width: 264px;
+}
+
+.containerBono img {
+    max-width: 54px;
+    max-height: 54px;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.datosUserdiv input {
+    width: 100%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    border: 0px;
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.datosUserdiv {
+    margin: 0 auto;
+    max-width: 353px;
+    padding: 0px 18px;
+}
+
+.datosUserdiv div {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    color: #757575;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    outline-color: transparent;
+}
+
+.txtAllTyC {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    color: #757575;
+}
+
+.txtAllTyC a {
+    color: #00A9E0;
+    text-decoration: none;
+}
+
+
+/*TyC*/
+
+.tycContainer {
+    height: 400px;
+    overflow-y: auto;
+    padding-bottom: 67px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #757575;
+    margin-bottom: 5px;
+}
+
+.tycBottom {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.85) 19.89%, rgba(255, 255, 255, 0.8) 40.88%, rgba(255, 255, 255, 0.75) 60.22%, rgba(255, 255, 255, 0.5) 81.22%, rgba(255, 255, 255, 0.3) 100%);
+    transform: rotate(-180deg);
+    position: absolute;
+    bottom: 0;
+    height: 67px;
+    width: 100%;
+}
+
+
+/*--------------------*/
