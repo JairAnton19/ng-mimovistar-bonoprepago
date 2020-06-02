@@ -1,19 +1,16 @@
 <div class="empty-bonus-container">
-    <div class="canjed-bonus-content"*ngIf="bono">
+    <div class="canjed-bonus-content" *ngIf="bono">
 
-    <img
-        src="assets/images/icons/regalo.svg"
-        alt="bono-regalo-movistar"
-      />
+        <img src="assets/images/icons/regalo.svg" alt="bono-regalo-movistar" />
 
-      <span style="margin-bottom: 20px;">Tu próximo bono estará disponible el siguiente mes.</span>
-      <div [innerHTML]=textPrincipal></div>
+        <span style="margin-bottom: 20px;">Tu próximo bono estará disponible el siguiente mes.</span>
+        <div [innerHTML]=textPrincipal></div>
     </div>
     <div class="tdp-first-detail">
         <label class="tdp-text-detail" (click)="linkRouter('/bono-detail')">Conoce más sobre tus bonos</label>
         <div [ngClass]="buttonClases()" (click)="backHome()">
-            <label >{{platform == "android" ? "VOLVER A MI LINEA":"Volver a mi linea"}}</label>
+            <label>{{platform == "android" ? "VOLVER A MI LINEA":"Volver a mi linea"}}</label>
         </div>
     </div>
 
-  </div>
+</div>

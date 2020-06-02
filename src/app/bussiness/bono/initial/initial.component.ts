@@ -110,6 +110,7 @@ export class InitialComponent implements OnInit {
   async peticionPost() {
 
     const getParams = this.globalService.getParams(['jwt']);
+    console.log('Hola mundo');
     if (getParams.value) {
       this.globalService.getUrlNovum(getParams.response.params.jwt);
       const body = {
@@ -130,7 +131,6 @@ export class InitialComponent implements OnInit {
           console.log(error);
           this.router.navigate(['/notFound'], { replaceUrl: true });
           console.log(body);
-
         }
       );
     } else {
@@ -145,7 +145,7 @@ export class InitialComponent implements OnInit {
       // this.phone = response.responseData.phone;
       if (response.responseData.bonoList.length > 0) {
         this.globalService.setToken(getParams.response.params.jwt);
-        sessionStorage.setItem('phone', response.responseData.phone); 
+        sessionStorage.setItem('phone', response.responseData.phone);
         this.subscriberId = response.responseData.subscriberId;
         response.responseData.bonoList.forEach((element) => {
           this.listOfBonos.push({
@@ -163,7 +163,8 @@ export class InitialComponent implements OnInit {
     } else if (response.responseCode === '2') {
       console.log('BONOEMPTY');
       this.globalService.setToken(getParams.response.params.jwt);
-      sessionStorage.setItem('phone', response.responseData.phone); 
+      sessionStorage.setItem('phone', response.responseData.phone);
+      console.log(response.responseData.phone);
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     } else {
      return this.router.navigate(['/notFound'], { replaceUrl: true });

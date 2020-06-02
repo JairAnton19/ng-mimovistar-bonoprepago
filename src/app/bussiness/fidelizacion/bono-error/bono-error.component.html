@@ -1,0 +1,23 @@
+<div class="pageAll-container">
+    <div class="pageAll-content">
+        <img src="assets/images/icons/iconCancel.svg" class="imgOnlyTall" />
+        <div class="titlediv">
+            <div class="pageAllTitle20_B500">¡Ups! algo salió mal</div>
+        </div>
+        <div class="subtitlediv">
+            <div class="pageAllTitle16">
+                Inténtalo nuevamente </div>
+
+        </div>
+
+    </div>
+    <div class="tdp-first-detail">
+
+        <div [ngClass]="buttonClases()" (click)="backHome()">
+            <label>{{platform == "android" ? "VOLVER A INTENTAR":"VOLVER A INTENTAR"}}</label>
+        </div>
+        <div [ngClass]="buttonClases()" class="btn-receipts" (click)="backHome()">
+            <label>{{platform == "android" ? "VOLVER A MI LÍNEA":"VOLVER A MI LÍNEA"}}</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="pageAll-container initial-container">
+    <div class="toptitlediv">
+        <div class="topTitle16">
+            ¡Te premiamos por estar al día en tus pagos!
+        </div>
+        <div class="containerBono">
+            <img src="assets/images/icons/iconGift.svg" />
+            <div class="pageAllTitle28_B500">6 GB</div>
+            <div class="pageAllTitle14_B300">de alta velocidad 4G al mes</div>
+            <div class="pageAllTitle14_Bold">por 3 meses</div>
+        </div>
+        <div class="containerBonoTime">Canjéalo hasta el 31 de agosto</div>
+        <div class="datosUserdiv">
+            <input type="text" placeholder="Ingresa tu correo electronico" />
+            <div class="txtAllTyC">
+                "Canjear" has leído y aceptado nuestros <a routerLink="#">Términos y condiciones</a>
+            </div>
+        </div>
+    </div>
+    <div class="pageAll-content">
+
+
+    </div>
+    <div class="tdp-first-detail">
+        <div [ngClass]="buttonClases()" (click)="backHome()">
+            <label>{{platform == "android" ? "CANJEAR":"CANJEAR"}}</label>
+        </div>
+    </div>
+    <div class="cargandoInitial" style="display:none;">
+        <img src="assets/cargando.gif" alt="cargando-telefonica" width="38" height="38" />
+        <p>Estamos cargando tu información</p>
+    </div>
+</div>
