@@ -385,18 +385,21 @@ input[type="text"] {
 }
 
 .txtError p {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 20px;
-  align-items: left;
-  margin-top: 0px;
-  padding-top: 0px;
-  text-align: left;
-  color: #f80a0a;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: left;
+    margin-top: 0px;
+    padding-top: 0px;
+    text-align: left;
+    color: #FF374A;
 }
 
+.errorClass input {
+    border-bottom: 1px solid #FF374A;
+}
 
 .txtAllTyC {
     font-family: Roboto;
