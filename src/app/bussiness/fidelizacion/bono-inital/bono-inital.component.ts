@@ -19,6 +19,9 @@ export class BonoInitalComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
+
   public canjearBono(email: string){
     if(this.validateEmail(email)){
       this.errorMessage = false;

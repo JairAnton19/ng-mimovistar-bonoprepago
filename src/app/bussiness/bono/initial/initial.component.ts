@@ -116,7 +116,6 @@ export class InitialComponent implements OnInit {
       const body = {
         encryptedToken: getParams.response.params.jwt
       };
-      console.log(jwtParams)
 
       if(!jwtParams){
         return this.router.navigate(['/bono-empty'], { replaceUrl: true });
@@ -140,7 +139,6 @@ export class InitialComponent implements OnInit {
         (error: any) => {
           console.log(error);
           this.router.navigate(['/notFound'], { replaceUrl: true });
-          console.log(body);
         }
       );
     } else {
