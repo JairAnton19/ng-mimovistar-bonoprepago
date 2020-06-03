@@ -60,9 +60,14 @@ export class GlobalService {
 
   public getUrlNovum(token:any){
     let tokenOK = this.jwt(token)
+
     if(isNullOrUndefined(tokenOK)){ return false }
     sessionStorage.setItem("urlCallBack",tokenOK.callback_url)
-    return tokenOK
+    return true
+  }
+
+  public decodeToken(token: any){
+    return this.jwt(token)
   }
 
   public getToken(): boolean {
@@ -107,4 +112,12 @@ export class GlobalService {
     return obj;
   }
 
+  public setBonoListPostpagoHogar(array: any){
+    sessionStorage.setItem('bonoList', JSON.stringify(array))
+  }
+
+  public getBonoListPostpagoHogar(){
+    let bonoList = sessionStorage.getItem('bonoList')
+    return bonoList != null ? JSON.parse(bonoList) : ''
+  }
 }
