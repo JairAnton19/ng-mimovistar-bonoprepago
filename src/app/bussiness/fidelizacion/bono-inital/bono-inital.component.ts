@@ -13,12 +13,14 @@ export class BonoInitalComponent implements OnInit {
   email: string;
   errorMessage = false;
   messageError: string = null;
-  messageDivError: string = null;
+  messageDivError: string = null;  
+  bonoLista: any[] = [];
   listOfBonosPostpagoHogar: any[] = [];
   bonoGB: string = null;
   descriptionBono: string = null;
   timeBono: string = null;
   dateBono: string = null;
+  typeBono: string = null;
 
   constructor(private route: Router, private globalService: GlobalService) {
 
@@ -37,7 +39,8 @@ export class BonoInitalComponent implements OnInit {
       this.bonoGB = bonoList[0].description.bonoGB;
       this.descriptionBono = bonoList[0].description.descriptionBono;
       this.timeBono = bonoList[0].description.timeBono;
-      this.dateBono = bonoList[0].description.dateBono;
+      this.dateBono = bonoList[0].description.dateBono;      
+      this.typeBono = bonoList[0].lineType;
     }
   }
 /*
@@ -56,7 +59,15 @@ export class BonoInitalComponent implements OnInit {
     if(this.validateEmail(email)){
       this.errorMessage = false;
       // falta llamar al servicio
-      this.route.navigate(['/bono-okm']);
+      if(this.typeBono === 'postpago'){
+        console.log('Entro a postpago');
+        this.route.navigate(['/bono-okm']);
+      }else if(this.typeBono === 'hogar'){
+        console.log('Entro a hogar');
+        this.route.navigate(['/bono-okh']);
+      }else{
+        this.route.navigate(['/bono-error']);
+      }
     }
     else {
       this.errorMessage = true;
