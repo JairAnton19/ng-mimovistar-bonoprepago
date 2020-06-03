@@ -156,11 +156,13 @@ export class InitialComponent implements OnInit {
                ]
             }
           }
+
           await this.validatePostpagoHogar(response, paramsToken.payload.line_type)
         }
+        else {
+          await this.peticionPost();
+        }
       }
-
-      await this.peticionPost();
     }
     else {
       this.router.navigate(['/notFound'], { replaceUrl: true });
