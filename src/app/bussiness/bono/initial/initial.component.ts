@@ -1,7 +1,7 @@
 import { GlobalService } from '../../../commons/services/global.service';
 import { DetectedPlatform } from '../../../commons/services/detectedPlatform';
 import { Bono } from '../../../commons/models/bono.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BonoService } from 'src/app/commons/services/bono.service';
 import { Router } from '@angular/router';
 import { CONSTANTS } from '../../../commons/constants/constants';
@@ -27,7 +27,7 @@ export class InitialComponent implements OnInit {
   //   { bonoPrepago: '<span class="labelNegrita">500 MB</span> por 1 día', type: 'internet', selected: false },
   // ];
   listOfBonos: any[] = [];
-  @Input() listOfBonosPostpagoHogar: any[] = [];
+  listOfBonosPostpagoHogar: any[] = [];
   subscriberIdPostpagoHogar: any;
   subscriberId: any;
 
@@ -156,20 +156,20 @@ export class InitialComponent implements OnInit {
                ]
             }
           }
-          await this.validatePostpagoHogar(response)
+          await this.validatePostpagoHogar(response, paramsToken.payload.line_type)
         }
       }
 
-      //await this.peticionPost();
+      await this.peticionPost();
     }
     else {
       this.router.navigate(['/notFound'], { replaceUrl: true });
     }
   }
 
-  async validatePostpagoHogar(response: any){
+  async validatePostpagoHogar(response: any, line_type: any){
     if(response.responseCode === '0'){
-      if(response.responseData.bonoList.length > 1){
+      if(response.responseData.bonoList.length > 0){
         this.subscriberIdPostpagoHogar = response.responseData.subscriberId;
         await response.responseData.bonoList.forEach((element) => {
           this.listOfBonosPostpagoHogar.push({
@@ -178,7 +178,8 @@ export class InitialComponent implements OnInit {
             type: element.type,
             selected: element.selected,
             subscriberId: response.responseData.subscriberId,
-            trackingCD: element.responseTrackingCD
+            trackingCD: element.responseTrackingCD,
+            lineType: line_type ? line_type : ''
           });
         });
 
