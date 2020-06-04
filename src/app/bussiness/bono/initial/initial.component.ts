@@ -191,19 +191,19 @@ export class InitialComponent implements OnInit {
       else {
         return this.router.navigate(['/bono-end'], { replaceUrl: true });
       }
-    }else if (response.responseCode === '2') {/*Vacio*/
+    }else if (response.responseCode === '1280') {/*Vacio*/
       console.log('Vacio');
       return this.router.navigate(['/bono-end'], { replaceUrl: true });
-    }else if (response.responseCode === '3') {/*Deuda*/
+    }else if (response.responseCode === '1284') {/*Deuda*/
       console.log('Con deuda');
       return this.router.navigate(['/bono-debt'], { replaceUrl: true });
-    }else if (response.responseCode === '4') {/*Max-Bono*/
+    }else if (response.responseCode === '1281') {/*Max-Bono*/
       console.log('Con Maximo');
       return this.router.navigate(['/bono-max'], { replaceUrl: true });
-    }else if (response.responseCode === '5') {/*facilidades tecnnicas*/
+    }else if (response.responseCode === '1282') {/*facilidades tecnnicas*/
       console.log('Con tecnicas');
       return this.router.navigate(['/bono-technical'], { replaceUrl: true });
-    }else if (response.responseCode === '6') {/*Con Bono*/
+    }else if (response.responseCode === '1283') {/*Con Bono*/
       console.log('Con Bono');
       return this.router.navigate(['/bono-canjed'], { replaceUrl: true });
     }else {
