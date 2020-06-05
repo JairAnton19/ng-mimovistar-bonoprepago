@@ -43,6 +43,24 @@ export class GlobalService {
     }
   }
 
+  public globalPostToken(url: string, body: any){
+    try{
+      console.log('globalPostToken')
+      console.log(url)
+      console.log(body)
+
+      return this.http.post(url, body, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Cookie': 'buid=AQABAAEAAAAm-06blBE1TpVMil8KPQ41SwZ0MSw9gv-YMgNfgO7PHjnkyIceJZA_xJTTqakZIGFe_f0aBXulJAKkxPoDHwFab4ciE07AzyiTjeBEMwxVuwwijdvCGMm6BwJJULPIlDkgAA; esctx=AQABAAAAAAAm-06blBE1TpVMil8KPQ41KktrSTWuBFCXZ0Ij6HYPoDJ3C5QcJ0rQBQO5WrUTVemiApmoKRapUH18Dz2k_YKxvBR_DoN1iMahpN3Cq3wTKsB9VRdPPVr824KRD5tEtFeWebgRL8K_cusBQMR6uk-nO32MDm3wTAilo-D4uCcTA9O-P48vM1yZEgOEmXqmke0gAA; x-ms-gateway-slice=prod; stsservicecookie=ests; fpc=At2_T9Oe0dFPpg51EndsXyR4o6DGAQAAADdjbNYOAAAA'
+        }
+      })
+    }
+    catch(error){
+      return error;
+    }
+  }
+
 
   public setToken(tkn: any): void {
     sessionStorage.setItem('token', tkn);
