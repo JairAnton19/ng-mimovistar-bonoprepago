@@ -70,7 +70,7 @@ img {
 
 .containerBonoBottom {
     width: 100%;
-    min-height: 119px;
+    min-height: 14px;
     background: #F28D15;
     box-sizing: border-box;
     border-bottom-left-radius: 8px;
@@ -78,6 +78,8 @@ img {
     border-bottom-right-radius: 8px;
     margin: 0;
     padding: 0;
+    position: absolute;
+    bottom: 0;
 }
 
 .containerBonoBottom .pageAllTitle20_B500 {
@@ -209,12 +211,12 @@ img {
 
 /*Titulo font 20*/
 
-.pageAllTitle20 {
+.pageAllTitle20_Lh28 {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 28px;
     text-align: center;
     color: #2A2A3C;
     margin: 0 auto;
@@ -390,6 +392,7 @@ img {
     min-height: 249px;
     min-width: 264px;
     border: 0px;
+    position: relative;
 }
 
 .containerBono img {

@@ -226,10 +226,10 @@ export class InitialComponent implements OnInit {
         encryptedToken: getParams.response.params.jwt
       };
 
-      await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
-        async (response: any) => {
-          /*const response = {
-            responseCode:"1280",
+      /*await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
+        async (response: any) => {*/
+          const response = {
+            responseCode:"1283",
             responseMessage:"Transacción realizada con Éxito",
             responseData:{
                phone:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTYsInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsInBob25lIjoiOTIwNzk1MzM2IiwiZXhwIjoxNTkxMTI1NzU2fQ.Qtt8_WnWMrHeoq_hJqazpIIUlAex1ITlcVcONy4qLus",
@@ -253,7 +253,7 @@ export class InitialComponent implements OnInit {
                   }
                ]
             }
-          }*/
+          }
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
           // this.globalService.setToken(getParams.response.params.jwt);
           if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
@@ -266,13 +266,13 @@ export class InitialComponent implements OnInit {
           this.cargando = false;
           console.log('Se guardo la posicion ' + this.posicion);
           console.log('Cargando false');
-     },
+     /*},
         (error: any) => {
           console.log('error');
           console.log(error);
           this.router.navigate(['/notFound'], { replaceUrl: true });
         }
-      );
+      );*/
     } else {
       this.router.navigate(['/notFound'], { replaceUrl: true });
     }
