@@ -23,6 +23,7 @@ import { BonoTechnicalComponent } from './bussiness/fidelizacion/bono-technical/
 import { BonoErrorComponent } from './bussiness/fidelizacion/bono-error/bono-error.component';
 import { BonoOkmComponent } from './bussiness/fidelizacion/bono-okm/bono-okm.component';
 import { BonoOkhComponent } from './bussiness/fidelizacion/bono-okh/bono-okh.component';
+import { NoBonoComponent } from './bussiness/fidelizacion/no-bono/no-bono.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { BonoOkhComponent } from './bussiness/fidelizacion/bono-okh/bono-okh.com
     BonoErrorComponent,
     BonoOkmComponent,
     BonoOkhComponent,
+    NoBonoComponent,
   ],
   imports: [
     BrowserAnimationsModule,

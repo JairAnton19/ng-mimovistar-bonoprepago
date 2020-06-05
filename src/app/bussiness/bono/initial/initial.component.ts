@@ -140,6 +140,7 @@ export class InitialComponent implements OnInit {
                callbackURL:"https://novum.com/endtest?state=2",
                webID:"service_redemption_prepay",
                nonce:"4zg86i83-7063-4799-9f9-4d968f79bfj99",
+               lineType:"prepago",
                bonoList:[
                   {
                     id:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsImJvbm9JRCI6IjIwOTU3NTMiLCJleHAiOjE1OTExMjU3NTl9.V_a486alrtGfpW22aM2IxwcUzTL4TCeibILJmY1uTd8",
@@ -191,20 +192,23 @@ export class InitialComponent implements OnInit {
       else {
         return this.router.navigate(['/bono-end'], { replaceUrl: true });
       }
-    }else if (response.responseCode === '1280') {/*Vacio*/
-      console.log('Vacio');
+    }else if (response.responseCode === '1280') {/*No bono*/
+      console.log('No corresponde campaña');
+      return this.router.navigate(['/no-bono'], { replaceUrl: true });
+    }else if (response.responseCode === '1209') {/*Vacio*/
+      console.log('El cliente no tiene campañas activas');
       return this.router.navigate(['/bono-end'], { replaceUrl: true });
     }else if (response.responseCode === '1284') {/*Deuda*/
-      console.log('Con deuda');
+      console.log('No aplica por deuda vencida pendiente');
       return this.router.navigate(['/bono-debt'], { replaceUrl: true });
     }else if (response.responseCode === '1281') {/*Max-Bono*/
-      console.log('Con Maximo');
+      console.log('Producto con velocidad > 200mb');
       return this.router.navigate(['/bono-max'], { replaceUrl: true });
     }else if (response.responseCode === '1282') {/*facilidades tecnnicas*/
-      console.log('Con tecnicas');
+      console.log('No corresponde por facilidad tecnica');
       return this.router.navigate(['/bono-technical'], { replaceUrl: true });
     }else if (response.responseCode === '1283') {/*Con Bono*/
-      console.log('Con Bono');
+      console.log('Ya cuenta con el beneficio');
       return this.router.navigate(['/bono-canjed'], { replaceUrl: true });
     }else {
       return this.router.navigate(['/bono-error'], { replaceUrl: true });
@@ -224,16 +228,47 @@ export class InitialComponent implements OnInit {
 
       await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {
+          /*const response = {
+            responseCode:"1282",
+            responseMessage:"Transacción realizada con Éxito",
+            responseData:{
+               phone:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTYsInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsInBob25lIjoiOTIwNzk1MzM2IiwiZXhwIjoxNTkxMTI1NzU2fQ.Qtt8_WnWMrHeoq_hJqazpIIUlAex1ITlcVcONy4qLus",
+               subscriberId:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsInN1YnNjcmliZXJJZCI6IjE0MDg0NjgyNCIsImV4cCI6MTU5MTEyNTc1OX0.EBK2xZV80Cqms4wL1ZX-xqNl3FhR_pbDDIKLPpJJaVo",
+               callbackURL:"https://novum.com/endtest?state=2",
+               webID:"service_redemption_prepay",
+               nonce:"4zg86i83-7063-4799-9f9-4d968f79bfj99",
+               lineType:"postpago",
+               bonoList:[
+                  {
+                    id:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsImJvbm9JRCI6IjIwOTU3NTMiLCJleHAiOjE1OTExMjU3NTl9.V_a486alrtGfpW22aM2IxwcUzTL4TCeibILJmY1uTd8",
+                    description:{
+                      bonoGB: "20 GB",
+                      descriptionBono: "de alta velocidad 4G al mes",
+                      timeBono: "por 3 meses",
+                      dateBono: "Canjéalo hasta el 31 de Agosto"
+                    },
+                    type:"PRODUCTOFFERID",
+                    selected:false,
+                    responseTrackingCD:"1225560401"
+                  }
+               ]
+            }
+          }*/
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
           // this.globalService.setToken(getParams.response.params.jwt);
-          await this.validation(response);
+          if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
+            await this.validatePostpagoHogar(response, response.responseData.lineType);
+          }else{
+            await this.validation(response);
+          }
+          
 
           this.cargando = false;
           console.log('Se guardo la posicion ' + this.posicion);
           console.log('Cargando false');
-        },
+     },
         (error: any) => {
-          console.log('error')
+          console.log('error');
           console.log(error);
           this.router.navigate(['/notFound'], { replaceUrl: true });
         }

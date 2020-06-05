@@ -15,6 +15,7 @@ import { BonoTechnicalComponent } from './bussiness/fidelizacion/bono-technical/
 import { BonoErrorComponent } from './bussiness/fidelizacion/bono-error/bono-error.component';
 import { BonoOkmComponent } from './bussiness/fidelizacion/bono-okm/bono-okm.component';
 import { BonoOkhComponent } from './bussiness/fidelizacion/bono-okh/bono-okh.component';
+import { NoBonoComponent } from './bussiness/fidelizacion/no-bono/no-bono.component';
 
 import { AuthGuard } from '../app/commons/guards/auth.guard';
 
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'bono-error', component: BonoErrorComponent},
   {path: 'bono-okm', component: BonoOkmComponent},
   {path: 'bono-okh', component: BonoOkhComponent},
+  {path: 'no-bono', component: NoBonoComponent},
   {path: '', redirectTo: 'bono-home', pathMatch: 'full'},
   {path: '**', redirectTo: 'notFound', pathMatch: 'full'},
 ];
