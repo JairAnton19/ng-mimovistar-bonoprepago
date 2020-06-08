@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bono-terms',
@@ -9,9 +10,10 @@ import {Location} from '@angular/common';
 
 export class BonoTermsComponent implements OnInit {
   platform = null;
-  constructor(private _location: Location) { }
+  constructor(private _location: Location, private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle( 'Términos y condiciones' );
   }
 
   public backClicked() {

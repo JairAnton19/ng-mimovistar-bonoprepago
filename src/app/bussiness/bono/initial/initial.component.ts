@@ -7,7 +7,6 @@ import { BonoService } from 'src/app/commons/services/bono.service';
 import { Router } from '@angular/router';
 import { CONSTANTS } from '../../../commons/constants/constants';
 import { IfStmt } from '@angular/compiler';
-import qs from 'query-string-ng'
 
 @Component({
   selector: 'app-initial',
@@ -45,10 +44,10 @@ export class InitialComponent implements OnInit {
 
     this.platform = this.detectedPlatform.detectPlatform();
     //await this.callbackToken()
-    await this.validateTypeLine();
+    await this.peticionPost();
   }
 
-  async callbackToken(){
+  /*async callbackToken(){
     const myHeaders = {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       "Cookie": "buid=AQABAAEAAAAm-06blBE1TpVMil8KPQ41SwZ0MSw9gv-YMgNfgO7PHjnkyIceJZA_xJTTqakZIGFe_f0aBXulJAKkxPoDHwFab4ciE07AzyiTjeBEMwxVuwwijdvCGMm6BwJJULPIlDkgAA; esctx=AQABAAAAAAAm-06blBE1TpVMil8KPQ41KktrSTWuBFCXZ0Ij6HYPoDJ3C5QcJ0rQBQO5WrUTVemiApmoKRapUH18Dz2k_YKxvBR_DoN1iMahpN3Cq3wTKsB9VRdPPVr824KRD5tEtFeWebgRL8K_cusBQMR6uk-nO32MDm3wTAilo-D4uCcTA9O-P48vM1yZEgOEmXqmke0gAA; x-ms-gateway-slice=prod; stsservicecookie=ests; fpc=At2_T9Oe0dFPpg51EndsXyR4o6DGAQAAADdjbNYOAAAA",
@@ -89,9 +88,9 @@ export class InitialComponent implements OnInit {
         console.log('error')
         console.log(error)
       }
-    )*/
+    )
 
-  }
+  }*/
 
 
   public selectedBono(index: number) {
@@ -153,7 +152,7 @@ export class InitialComponent implements OnInit {
     return true;
   }
 
-  async validateTypeLine(){
+  /*async validateTypeLine(){
     const getParams = this.globalService.getParams(['jwt']);
 
     if (getParams.value) {
@@ -166,7 +165,7 @@ export class InitialComponent implements OnInit {
           paramsToken.payload.line_type &&
           (paramsToken.payload.line_type.toUpperCase() === 'POSTPAGO' || paramsToken.payload.line_type.toUpperCase() === 'HOGAR')){
 
-          const bodyRequest = {};
+          const bodyRequest = {};*/
 
           /*await this.globalService.globlalPost(`${CONSTANTS.retrieveAvailablePromotions}`, bodyRequest).subscribe(
             async(response: any) => {
@@ -177,7 +176,7 @@ export class InitialComponent implements OnInit {
             }
           )*/
 
-          const response = {
+         /* const response = {
             responseCode:"1280",
             responseMessage:"Transacción realizada con Éxito",
             responseData:{
@@ -214,7 +213,7 @@ export class InitialComponent implements OnInit {
     else {
       this.router.navigate(['/notFound'], { replaceUrl: true });
     }
-  }
+  }*/
 
   async validatePostpagoHogar(response: any, line_type: any){
     if(response.responseCode === '0'){
@@ -223,6 +222,7 @@ export class InitialComponent implements OnInit {
         await response.responseData.bonoList.forEach((element) => {
           this.listOfBonosPostpagoHogar.push({
             bonoId: element.id,
+            phone: element.phone,
             description: element.description,
             type: element.type,
             selected: element.selected,
@@ -264,10 +264,8 @@ export class InitialComponent implements OnInit {
 
   async peticionPost() {
     const getParams = this.globalService.getParams(['jwt']);
-
     if (getParams.value) {
       this.globalService.getUrlNovum(getParams.response.params.jwt);
-
       const body = {
         encryptedToken: getParams.response.params.jwt
       };
@@ -275,7 +273,7 @@ export class InitialComponent implements OnInit {
       /*await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {*/
           const response = {
-            responseCode:"1283",
+            responseCode:"0",
             responseMessage:"Transacción realizada con Éxito",
             responseData:{
                phone:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTYsInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsInBob25lIjoiOTIwNzk1MzM2IiwiZXhwIjoxNTkxMTI1NzU2fQ.Qtt8_WnWMrHeoq_hJqazpIIUlAex1ITlcVcONy4qLus",
@@ -283,7 +281,7 @@ export class InitialComponent implements OnInit {
                callbackURL:"https://novum.com/endtest?state=2",
                webID:"service_redemption_prepay",
                nonce:"4zg86i83-7063-4799-9f9-4d968f79bfj99",
-               lineType:"postpago",
+               lineType:"prepago",
                bonoList:[
                   {
                     id:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsImJvbm9JRCI6IjIwOTU3NTMiLCJleHAiOjE1OTExMjU3NTl9.V_a486alrtGfpW22aM2IxwcUzTL4TCeibILJmY1uTd8",
@@ -307,8 +305,6 @@ export class InitialComponent implements OnInit {
           }else{
             await this.validation(response);
           }
-
-
           this.cargando = false;
           console.log('Se guardo la posicion ' + this.posicion);
           console.log('Cargando false');

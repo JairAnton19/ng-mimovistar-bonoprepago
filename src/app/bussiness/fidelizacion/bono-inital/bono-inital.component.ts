@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../../commons/services/global.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bono-inital',
@@ -17,21 +18,26 @@ export class BonoInitalComponent implements OnInit {
   bonoLista: any[] = [];
   listOfBonosPostpagoHogar: any[] = [];
   bonoGB: string = null;
+  phone: string = null;
+  subscriberId: string = null;
+  id: string = null;
+  trackingCD: string = null;
   descriptionBono: string = null;
   timeBono: string = null;
   dateBono: string = null;
   typeBono: string = null;
   emailField = false;
 
-  constructor(private route: Router, private globalService: GlobalService) {
+  constructor(private route: Router, private globalService: GlobalService, private titleService: Title) {
 
   }
 
   async ngOnInit(){
     this.listOfBonosPostpagoHogar = this.globalService.getBonoListPostpagoHogar()
-    console.log('listOfBonosPostpagoHogar initial')
-    console.log(this.listOfBonosPostpagoHogar)
-    await this.loadBono(this.listOfBonosPostpagoHogar)
+    console.log('listOfBonosPostpagoHogar initial');
+    console.log(this.listOfBonosPostpagoHogar);
+    await this.loadBono(this.listOfBonosPostpagoHogar);
+    this.titleService.setTitle( 'Bono Fidelización' );
   }
 
 
@@ -42,6 +48,10 @@ export class BonoInitalComponent implements OnInit {
       this.timeBono = bonoList[0].description.timeBono;
       this.dateBono = bonoList[0].description.dateBono;
       this.typeBono = bonoList[0].lineType;
+      this.phone = bonoList[0].phone;
+      this.subscriberId = bonoList[0].subscriberId;
+      this.id = bonoList[0].id;
+      this.trackingCD = bonoList[0].trackingCD;
 
       if(bonoList[0].lineType !== undefined || bonoList[0].lineType !== null){
         this.emailField = bonoList[0].lineType.toUpperCase() === 'POSTPAGO' ? false : true;
@@ -60,24 +70,25 @@ export class BonoInitalComponent implements OnInit {
 
 
 
-  public canjearBono(email: string){
-    if(this.validateEmail(email)){
-      this.errorMessage = false;
-      // falta llamar al servicio
-      if(this.typeBono === 'postpago'){
-        console.log('Entro a postpago');
-        this.route.navigate(['/bono-okm']);
-      }else if(this.typeBono === 'hogar'){
-        console.log('Entro a hogar');
+  public canjearBono(){
+    if(this.typeBono.toUpperCase() === 'POSTPAGO'){
+      console.log('Entro a postpago');
+      //Servicio Canjear
+      this.route.navigate(['/bono-okm']);
+    }else if(this.typeBono.toUpperCase() === 'HOGAR'){
+      console.log('Entro a hogar');
+      //Servicio Canjear
+      var email = ((document.getElementById('inputEmail') as HTMLInputElement).value);
+      if(this.validateEmail(email)){
+        this.errorMessage = false;
+        console.log('Val OK - Bono');
         this.route.navigate(['/bono-okh']);
       }else{
-        this.route.navigate(['/bono-error']);
+        this.errorMessage = true;
       }
+    }else{
+        this.route.navigate(['/bono-error']);
     }
-    else {
-      this.errorMessage = true;
-    }
-
   }
 
   public backHome() {

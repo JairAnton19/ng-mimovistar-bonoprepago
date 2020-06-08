@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bono-canjed',
@@ -10,9 +11,10 @@ export class BonoCanjedComponent implements OnInit {
 
   platform = null;
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle( 'Bono Fidelización' );
   }
 
   public backHome() {

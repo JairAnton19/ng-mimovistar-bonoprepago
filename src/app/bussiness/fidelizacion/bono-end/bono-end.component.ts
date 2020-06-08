@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bono-end',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BonoEndComponent implements OnInit {
   platform = null;
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle( 'Bono Fidelización' );
   }
   public backHome() {
     const url = sessionStorage.getItem('urlCallBack');
