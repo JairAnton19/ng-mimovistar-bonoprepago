@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../../commons/services/global.service';
 
@@ -13,7 +13,7 @@ export class BonoInitalComponent implements OnInit {
   email: string;
   errorMessage = false;
   messageError: string = null;
-  messageDivError: string = null;  
+  messageDivError: string = null;
   bonoLista: any[] = [];
   listOfBonosPostpagoHogar: any[] = [];
   bonoGB: string = null;
@@ -21,6 +21,7 @@ export class BonoInitalComponent implements OnInit {
   timeBono: string = null;
   dateBono: string = null;
   typeBono: string = null;
+  emailField = false;
 
   constructor(private route: Router, private globalService: GlobalService) {
 
@@ -39,8 +40,12 @@ export class BonoInitalComponent implements OnInit {
       this.bonoGB = bonoList[0].description.bonoGB;
       this.descriptionBono = bonoList[0].description.descriptionBono;
       this.timeBono = bonoList[0].description.timeBono;
-      this.dateBono = bonoList[0].description.dateBono;      
+      this.dateBono = bonoList[0].description.dateBono;
       this.typeBono = bonoList[0].lineType;
+
+      if(bonoList[0].lineType !== undefined || bonoList[0].lineType !== null){
+        this.emailField = bonoList[0].lineType.toUpperCase() === 'POSTPAGO' ? false : true;
+      }
     }
   }
 /*

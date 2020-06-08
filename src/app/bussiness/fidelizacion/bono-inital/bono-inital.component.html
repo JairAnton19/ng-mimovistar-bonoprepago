@@ -11,7 +11,7 @@
         </div>
         <div class="containerBonoTime" [innerHTML]=dateBono></div>
         <div class="datosUserdiv" [ngClass]=messageDivError>
-            <input id="inputEmail" type="text" autocomplete="off" (keyup)="onKeydown($event)" #email placeholder="Ingresa tu correo electronico" style="margin-bottom: 0px;" />
+            <input *ngIf="emailField" id="inputEmail" type="text" autocomplete="off" (keyup)="onKeydown($event)" #email placeholder="Ingresa tu correo electronico" style="margin-bottom: 0px;" />
             <div class="txtError">
                 <p *ngIf="errorMessage" [innerHTML]=messageError></p>
             </div>

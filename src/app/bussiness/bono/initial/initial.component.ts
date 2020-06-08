@@ -44,8 +44,8 @@ export class InitialComponent implements OnInit {
   async ngOnInit() {
 
     this.platform = this.detectedPlatform.detectPlatform();
-    await this.callbackToken()
-    //await this.validateTypeLine();
+    //await this.callbackToken()
+    await this.validateTypeLine();
   }
 
   async callbackToken(){
@@ -307,7 +307,7 @@ export class InitialComponent implements OnInit {
           }else{
             await this.validation(response);
           }
-          
+
 
           this.cargando = false;
           console.log('Se guardo la posicion ' + this.posicion);
