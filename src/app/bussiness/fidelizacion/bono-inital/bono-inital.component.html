@@ -8,6 +8,7 @@
             <div class="pageAllTitle28_B500" [innerHTML]=bonoGB></div>
             <div class="pageAllTitle14_B300" [innerHTML]=descriptionBono></div>
             <div class="pageAllTitle14_Bold" [innerHTML]=timeBono></div>
+            <div class="pageAllTitle14_B300" [innerHTML]=description style="max-width: 220px"></div>
         </div>
         <div class="containerBonoTime" [innerHTML]=dateBono></div>
         <div class="datosUserdiv" [ngClass]=messageDivError>
@@ -29,7 +30,7 @@
             <label>{{platform == "android" ? "CANJEAR":"CANJEAR"}}</label>
         </div>
     </div>
-    <div class="cargandoInitial" style="display:none;">
+    <div class="cargandoInitial" *ngIf="cargando">
         <img src="assets/cargando.gif" alt="cargando-telefonica" width="38" height="38" />
         <p>Estamos cargando tu información</p>
     </div>

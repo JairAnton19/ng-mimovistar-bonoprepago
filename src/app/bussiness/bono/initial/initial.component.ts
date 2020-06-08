@@ -102,7 +102,7 @@ export class InitialComponent implements OnInit {
     this.bonoSelected.subscriberId = this.listOfBonos[index].subscriberId;
     this.bonoSelected.trackingCD = this.listOfBonos[index].trackingCD;
 
-    console.log(this.bonoSelected)
+    console.log(this.bonoSelected);
 
     for (let i = 0; i < this.listOfBonos.length; i++) {
       if (i === index) {
@@ -224,6 +224,7 @@ export class InitialComponent implements OnInit {
             bonoId: element.id,
             phone: element.phone,
             description: element.description,
+            detail: element.detail,
             type: element.type,
             selected: element.selected,
             subscriberId: response.responseData.subscriberId,
@@ -281,15 +282,16 @@ export class InitialComponent implements OnInit {
                callbackURL:"https://novum.com/endtest?state=2",
                webID:"service_redemption_prepay",
                nonce:"4zg86i83-7063-4799-9f9-4d968f79bfj99",
-               lineType:"prepago",
+               lineType:"hogar",
                bonoList:[
                   {
                     id:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsImJvbm9JRCI6IjIwOTU3NTMiLCJleHAiOjE1OTExMjU3NTl9.V_a486alrtGfpW22aM2IxwcUzTL4TCeibILJmY1uTd8",
-                    description:{
-                      bonoGB: "20 GB",
-                      descriptionBono: "de alta velocidad 4G al mes",
-                      timeBono: "por 3 meses",
-                      dateBono: "Canjéalo hasta el 31 de Agosto"
+                    description: "HABLA ILIMITADO 2 DIAS a TODO OPERADOR ademas FACEBOOK Y WHATSAPP ILIMITADO y 100 MB libres A SOLO",
+                    detail:{
+                      quantity: "20 GB",
+                      descriptionaditional: "de alta velocidad 4G al mes",
+                      duration: "por 3 meses",
+                      expiration: "Canjéalo hasta el 31 de Agosto"
                     },
                     type:"PRODUCTOFFERID",
                     selected:false,
@@ -302,6 +304,7 @@ export class InitialComponent implements OnInit {
           // this.globalService.setToken(getParams.response.params.jwt);
           if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
             await this.validatePostpagoHogar(response, response.responseData.lineType);
+            this.cargando = false;
           }else{
             await this.validation(response);
           }
