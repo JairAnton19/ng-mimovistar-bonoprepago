@@ -234,7 +234,7 @@ export class InitialComponent implements OnInit {
         });
 
         this.globalService.setBonoListPostpagoHogar(this.listOfBonosPostpagoHogar)
-        return this.router.navigate(['/bono-inital'], {replaceUrl: true})
+        return this.router.navigate(['/bono-error'], {replaceUrl: true})
       }
       else {
         return this.router.navigate(['/bono-end'], { replaceUrl: true });
@@ -267,6 +267,9 @@ export class InitialComponent implements OnInit {
     const getParams = this.globalService.getParams(['jwt']);
     if (getParams.value) {
       this.globalService.getUrlNovum(getParams.response.params.jwt);
+      const urlJwt = window.location.href
+      this.globalService.setUrlJwt(urlJwt)
+
       const body = {
         encryptedToken: getParams.response.params.jwt
       };
@@ -301,6 +304,9 @@ export class InitialComponent implements OnInit {
             }
           }
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
+
+
+
           // this.globalService.setToken(getParams.response.params.jwt);
           if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
             await this.validatePostpagoHogar(response, response.responseData.lineType);

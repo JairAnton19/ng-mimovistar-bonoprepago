@@ -12,8 +12,8 @@ export class BonoErrorComponent implements OnInit {
   ngOnInit() {
   }
   public backHome() {
-    const url = sessionStorage.getItem('urlCallBack');
-    window.location.href = url;
+    const jwt = sessionStorage.getItem('urlJwt')
+    window.location.href = jwt;
   }
   public buttonClases() {
     return ['tdp-button', this.platform === 'ios' ? 'fontIos' : 'fontAndroid'];

@@ -5,6 +5,7 @@ import { EncryptService } from '../../commons/services/encrypt.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ParamsRouting } from '../models/objParams.model';
 import { ActivatedRoute } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 
 
@@ -137,5 +138,14 @@ export class GlobalService {
   public getBonoListPostpagoHogar(){
     let bonoList = sessionStorage.getItem('bonoList')
     return bonoList != null ? JSON.parse(bonoList) : ''
+  }
+
+  public setUrlJwt(url: any){
+    sessionStorage.setItem('urlJwt', url)
+  }
+
+  public getUrlJwt(){
+    let urlJwt = sessionStorage.get('urlJwt')
+    return urlJwt != null ? urlJwt : ''
   }
 }
