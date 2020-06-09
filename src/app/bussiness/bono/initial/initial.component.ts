@@ -234,7 +234,7 @@ export class InitialComponent implements OnInit {
         });
 
         this.globalService.setBonoListPostpagoHogar(this.listOfBonosPostpagoHogar)
-        return this.router.navigate(['/bono-error'], {replaceUrl: true})
+        return this.router.navigate(['/bono-inital'], {replaceUrl: true})
       }
       else {
         return this.router.navigate(['/bono-end'], { replaceUrl: true });
@@ -308,7 +308,7 @@ export class InitialComponent implements OnInit {
 
 
           // this.globalService.setToken(getParams.response.params.jwt);
-          if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
+          if(response.responseData.lineType.toUpperCase() === 'POSTPAGO' || response.responseData.lineType.toUpperCase() === 'HOGAR'){
             await this.validatePostpagoHogar(response, response.responseData.lineType);
             this.cargando = false;
           }else{
