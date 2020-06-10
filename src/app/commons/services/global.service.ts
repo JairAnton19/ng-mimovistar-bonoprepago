@@ -63,10 +63,6 @@ export class GlobalService {
     return true
   }
 
-  public decodeToken(token: any){
-    return this.jwt(token)
-  }
-
   public getToken(): boolean {
     const token = sessionStorage.getItem('token');
     const getDate = new Date();
