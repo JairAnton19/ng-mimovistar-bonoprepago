@@ -49,7 +49,9 @@ export class GlobalService {
       console.log('auth')
       console.log(requestOptions)
 
-      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body), requestOptions);
+      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body), {
+        responseType: 'json'
+      });
     }
     catch (error) {
       return error;
