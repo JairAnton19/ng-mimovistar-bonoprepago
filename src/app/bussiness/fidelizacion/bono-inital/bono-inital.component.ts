@@ -80,8 +80,8 @@ export class BonoInitalComponent implements OnInit {
 
 
   public canjearBono(){
-    this.cargando = true;
-    if(this.typeBono.toUpperCase() === 'POSTPAGO'){      
+    if(this.typeBono.toUpperCase() === 'POSTPAGO'){
+      this.cargando = true;
       const body = {
         bonoId: this.bonoId,
         lineType:this.typeBono,
@@ -96,17 +96,20 @@ export class BonoInitalComponent implements OnInit {
             this.cargando = false;
             this.route.navigate(['/bono-okm']);
           } else {
+            this.cargando = false;
             this.router.navigate(['/bono-error'], { replaceUrl: true });
           }
         },
         (error: any) => {
+          this.cargando = false;
           this.router.navigate(['/bono-error'], { replaceUrl: true });
         });
     }else if(this.typeBono.toUpperCase() === 'HOGAR'){
-      var emailActual = ((document.getElementById('inputEmail') as HTMLInputElement).value);
+      console.log("entrohogar");
+      var emailActual = ((document.getElementById('inputEmail') as HTMLInputElement).value);      
       if(this.validateEmail(emailActual)){
         this.errorMessage = false;
-        console.log('Val OK - Bono');
+        this.cargando = true;
         const body = {
           bonoId: this.bonoId,
           lineType:this.typeBono,
@@ -122,10 +125,12 @@ export class BonoInitalComponent implements OnInit {
               this.cargando = false;
               this.route.navigate(['/bono-okh']);
             } else {
+              this.cargando = false;
               this.router.navigate(['/bono-error'], { replaceUrl: true });
             }
           },
           (error: any) => {
+            this.cargando = false;
             this.router.navigate(['/bono-error'], { replaceUrl: true });
           });
       }else{
@@ -138,6 +143,7 @@ export class BonoInitalComponent implements OnInit {
 
   public backHome() {
     const url = sessionStorage.getItem('urlCallBack');
+    console.log(url);
     window.location.href = url;
   }
 

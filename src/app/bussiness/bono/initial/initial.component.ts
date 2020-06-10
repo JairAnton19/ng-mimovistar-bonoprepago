@@ -234,7 +234,7 @@ export class InitialComponent implements OnInit {
         });
 
         this.globalService.setBonoListPostpagoHogar(this.listOfBonosPostpagoHogar)
-        return this.router.navigate(['/bono-error'], {replaceUrl: true})
+        return this.router.navigate(['/bono-inital'], {replaceUrl: true})
       }
       else {
         return this.router.navigate(['/bono-end'], { replaceUrl: true });

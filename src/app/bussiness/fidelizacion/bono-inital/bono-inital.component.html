@@ -16,18 +16,21 @@
             <div class="txtError">
                 <p *ngIf="errorMessage" [innerHTML]=messageError></p>
             </div>
-            <div class="txtAllTyC">
-                Al "Canjear" has leído y aceptado nuestros <a routerLink="#" (click)="linkRouter('/bono-terms')">Términos y condiciones</a>
-            </div>
+
         </div>
     </div>
     <div class="pageAll-content">
 
 
     </div>
+    <div class="txtAllTyC">
+        Al dar clic a "ACTIVAR" reconoces haber leído y aceptado nuestros <a routerLink="#" (click)="linkRouter('/bono-terms')">Términos y condiciones</a>
+    </div>
+    <br>
     <div class="tdp-first-detail">
+
         <div [ngClass]="buttonClases()" (click)="canjearBono()">
-            <label>{{platform == "android" ? "CANJEAR":"CANJEAR"}}</label>
+            <label>{{platform == "android" ? "ACTIVAR":"ACTIVAR"}}</label>
         </div>
     </div>
     <div class="cargandoInitial" *ngIf="cargando">
