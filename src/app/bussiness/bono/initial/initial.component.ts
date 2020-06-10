@@ -125,6 +125,7 @@ export class InitialComponent implements OnInit {
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL)
 
           if(!isNullOrUndefined(response.responseData.lineType)){
+            response.responseData.lineType = 'Postpaid'
             let lineType = response.responseData.lineType.toUpperCase()
 
             if(lineType === 'PREPAID'){ // continue prepaid flow
@@ -155,9 +156,12 @@ export class InitialComponent implements OnInit {
 
 
   async validatePostpagoHogar(response: any){
-    if(response.responseCode === '0'){
-      if(response.responseData.bonoList.length > 0){
-        this.subscriberIdPostpagoHogar = response.responseData.subscriberId;
+    if(response.responseCode === '0')
+    {
+      if(response.responseData.bonoList.length > 0)
+      {
+        this.subscriberIdPostpagoHogar = response.responseData.subscriberId
+
         await response.responseData.bonoList.forEach((element) => {
           this.listOfBonosPostpagoHogar.push({
             bonoId: element.id,
