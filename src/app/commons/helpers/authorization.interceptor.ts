@@ -18,22 +18,14 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   constructor() {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-
     request = request.clone({
       setHeaders: {
         'Authorization': `Basic ${this.prod}`,
         'Content-Type': 'application/json',
+        'Ocp-Apim-Subscription-Key': '2dc510c8323c494c843d86bb74f3d07a'
       }
-    });
-
+    })
 
     return next.handle(request);
   }
 }
-
-/*
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-*/

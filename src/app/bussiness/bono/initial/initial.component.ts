@@ -276,11 +276,34 @@ export class InitialComponent implements OnInit {
       };
       console.log('body')
       console.log(body)
+/*
+      const head = new Headers()
+      head.set('Ocp-Apim-Subscription-Key', '2dc510c8323c494c843d86bb74f3d07a'),
+      head.set("Authorization", "Basic bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz")
+      head.set("Content-Type", "application/json")
+      head.set('Content-length', '0')
+      head.set('Access-Control-Allow-Origin', '*')
+      head.set('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS')
+      head.set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With')
+
+      const options = {
+        headers: head,
+        method: 'POST',
+        body:  JSON.stringify({"encryptedToken":"eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL29iLmNvbS8iLCJzdWIiOiJXZWJ2aWV3IiwiYXVkIjoid3d3Lm5vdnVtLmNvbSIsImV4cCI6MTU5MTgxNDg4MCwiaWF0IjoxNTkxODExMjgwLCJ1c2VyX2lkIjoiTVNJU0ROLTkyMDk1MjQ4NyIsImNsaWVudF9pZCI6Im5vdnVtX2lkIiwid2ViX2lkIjoic2VydmljZV9yZWRlbXB0aW9uX3ByZXBheSIsImNhbGxiYWNrX3VybCI6Imh0dHBzOi8vbm92dW0uY29tL2VuZHRlc3Q_c3RhdGU9MiIsIm5vbmNlIjoiNHpnODZpODMtNzA2My00Nzk5LTlmOS00ZDk2OGY3OWJmajk5IiwicGF5bG9hZCI6eyJtc2lzZG4iOiI1MTk4ODY4MzQ0MyIsIm9yaWdpbl9hcHAiOiJhcHBfbm92dW0iLCJsaW5lX3R5cGUiOiJwcmVwYWlkIn19.KTR7o0cl80okG0L9Pee73saDcRn5cbqvZMTt9uF43uVG9sCVCe2ev9XRXmR6F1F62UAnvRUtlfnafdqB5__QVdFbVAdUmqHLzowKxswPuRyICkahokZug8jdlCJsGXt_J3-mfe7kAjeRsP0AN8rif5VSyvEnouLKdshSGt8V7VKBsC7si3xgV6LXwYuhr3MsFIkEMPId9tx0o1InJAlUrAm1-fVXGCYYe_9IeWgrHgRU161P_26p1bayBlb2f9YZNdntIKcJzOIr29HIG-VzLOi26HCbtPeGG8uVkVYdprqWTyH_PRCLroAH0Il3WrgZIQ-DPr8OihzDlK8UdOJIwg"})
+      }
+
+      const response = fetch('https://apimngr-genesis-dev.azure-api.net/campaign-fidelizacion/v1/getAvailablePromotions', options)
+      const data = await (await response).json()
+
+      console.log('data')
+      console.log(data)
+*/
+
 
       await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) =>
         {
-          console.log('response')
+          console.log('responseeee')
           console.log(response)
         },
         (error: any) => {

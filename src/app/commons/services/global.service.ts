@@ -34,40 +34,12 @@ export class GlobalService {
 
   public globlalPost(url: string, body: any) {
     try {
-      console.log('globalPost')
-      console.log(`${this.REST_API_SERVER}/${url}`)
-      console.log(JSON.stringify(body))
-
-      let requestOptions = {
-        headers: new HttpHeaders({
-          'Authorization': 'Basic bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz',
-          'Ocp-Apim-Subscription-Key':'2dc510c8323c494c843d86bb74f3d07a'
-        })
-      }
-
-
-      console.log('auth')
-      console.log(requestOptions)
-
-      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body), {
-        responseType: 'json'
-      });
+      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body), {responseType: 'json'})
     }
     catch (error) {
       return error;
     }
   }
-
-  /*
-     responseType: 'json',
-        headers: new HttpHeaders({
-          'Ocp-Apim-Subscription-Key': '2dc510c8323c494c843d86bb74f3d07a',
-          'Authorization': 'Basic bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-        })
-  */
 
   public setToken(tkn: any): void {
     sessionStorage.setItem('token', tkn);
