@@ -273,57 +273,33 @@ export class InitialComponent implements OnInit {
       const body = {
         encryptedToken: getParams.response.params.jwt
       };
-
-      /*await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
-        async (response: any) => {*/
-          const response = {
-            responseCode:"0",
-            responseMessage:"Transacción realizada con Éxito",
-            responseData:{
-               phone:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTYsInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsInBob25lIjoiOTIwNzk1MzM2IiwiZXhwIjoxNTkxMTI1NzU2fQ.Qtt8_WnWMrHeoq_hJqazpIIUlAex1ITlcVcONy4qLus",
-               subscriberId:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsInN1YnNjcmliZXJJZCI6IjE0MDg0NjgyNCIsImV4cCI6MTU5MTEyNTc1OX0.EBK2xZV80Cqms4wL1ZX-xqNl3FhR_pbDDIKLPpJJaVo",
-               callbackURL:"https://novum.com/endtest?state=2",
-               webID:"service_redemption_prepay",
-               nonce:"4zg86i83-7063-4799-9f9-4d968f79bfj99",
-               lineType:"hogar",
-               bonoList:[
-                  {
-                    id:"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJOb3Z1bSBCb25vIFByZXBhZ28iLCJpYXQiOjE1OTExMjIxNTksInN1YiI6IkVuY3J5cHRpbmcgZGF0YSIsImlzcyI6Ik5vdnVtIFdlYiBJZCIsImJvbm9JRCI6IjIwOTU3NTMiLCJleHAiOjE1OTExMjU3NTl9.V_a486alrtGfpW22aM2IxwcUzTL4TCeibILJmY1uTd8",
-                    description: "HABLA ILIMITADO 2 DIAS a TODO OPERADOR ademas FACEBOOK Y WHATSAPP ILIMITADO y 100 MB libres A SOLO",
-                    detail:{
-                      quantity: "20 GB",
-                      descriptionaditional: "de alta velocidad 4G al mes",
-                      duration: "por 3 meses",
-                      expiration: "Canjéalo hasta el 31 de Agosto"
-                    },
-                    type:"PRODUCTOFFERID",
-                    selected:false,
-                    responseTrackingCD:"1225560401"
-                  }
-               ]
-            }
-          }
-          sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
-
-
-
-          // this.globalService.setToken(getParams.response.params.jwt);
-          if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
-            await this.validatePostpagoHogar(response, response.responseData.lineType);
-            this.cargando = false;
-          }else{
-            await this.validation(response);
-          }
-          this.cargando = false;
-          console.log('Se guardo la posicion ' + this.posicion);
-          console.log('Cargando false');
-     /*},
+      console.log('body')
+      console.log(body)
+      await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
+        async (response: any) =>
+        {
+          console.log('response')
+          console.log(response)
+        },
         (error: any) => {
           console.log('error');
           console.log(error);
-          this.router.navigate(['/notFound'], { replaceUrl: true });
+          //this.router.navigate(['/notFound'], { replaceUrl: true });
         }
-      );*/
+      )
+      /*
+       // this.globalService.setToken(getParams.response.params.jwt);
+       sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
+       if(response.responseData.lineType === 'postpago' || response.responseData.lineType === 'hogar'){
+        await this.validatePostpagoHogar(response, response.responseData.lineType);
+        this.cargando = false;
+      }else{
+        await this.validation(response);
+      }
+      this.cargando = false;
+      console.log('Se guardo la posicion ' + this.posicion);
+      console.log('Cargando false');*/
+
     } else {
       this.router.navigate(['/notFound'], { replaceUrl: true });
     }

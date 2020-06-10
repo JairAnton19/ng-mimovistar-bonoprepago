@@ -17,51 +17,55 @@ const helper = new JwtHelperService();
 })
 
 export class GlobalService {
-  private REST_API_SERVER = 'https://aks-mimovistar-ingress-prod.eastus2.cloudapp.azure.com';
+  //private REST_API_SERVER = 'https://aks-mimovistar-ingress-prod.eastus2.cloudapp.azure.com';
+  private REST_API_SERVER = 'https://apimngr-genesis-dev.azure-api.net';
+
 
   constructor(private active: ActivatedRoute, private http: HttpClient, private encryptService: EncryptService) { }
 
   public globlalGet(url: string) {
-
     try {
-      return this.http.get(`${this.REST_API_SERVER}/${url}`,
-        {
-           responseType: 'json'
-        });
-    } catch (error) {
+      return this.http.get(`${this.REST_API_SERVER}/${url}`,{responseType: 'json'});
+    }
+    catch (error) {
       return error;
     }
   }
 
   public globlalPost(url: string, body: any) {
     try {
-      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body),
-        {
-          responseType: 'json'}
-          );
-    } catch (error) {
+      console.log('globalPost')
+      console.log(`${this.REST_API_SERVER}/${url}`)
+      console.log(JSON.stringify(body))
+
+      let requestOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Basic bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz',
+          'Ocp-Apim-Subscription-Key':'2dc510c8323c494c843d86bb74f3d07a'
+        })
+      }
+
+
+      console.log('auth')
+      console.log(requestOptions)
+
+      return this.http.post(`${this.REST_API_SERVER}/${url}`, JSON.stringify(body), requestOptions);
+    }
+    catch (error) {
       return error;
     }
   }
 
-  public globalPostToken(url: string, body: any){
-    try{
-      console.log('globalPostToken')
-      console.log(url)
-      console.log(body)
-
-      return this.http.post(url, body, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Cookie': 'buid=AQABAAEAAAAm-06blBE1TpVMil8KPQ41SwZ0MSw9gv-YMgNfgO7PHjnkyIceJZA_xJTTqakZIGFe_f0aBXulJAKkxPoDHwFab4ciE07AzyiTjeBEMwxVuwwijdvCGMm6BwJJULPIlDkgAA; esctx=AQABAAAAAAAm-06blBE1TpVMil8KPQ41KktrSTWuBFCXZ0Ij6HYPoDJ3C5QcJ0rQBQO5WrUTVemiApmoKRapUH18Dz2k_YKxvBR_DoN1iMahpN3Cq3wTKsB9VRdPPVr824KRD5tEtFeWebgRL8K_cusBQMR6uk-nO32MDm3wTAilo-D4uCcTA9O-P48vM1yZEgOEmXqmke0gAA; x-ms-gateway-slice=prod; stsservicecookie=ests; fpc=At2_T9Oe0dFPpg51EndsXyR4o6DGAQAAADdjbNYOAAAA'
-        }
-      })
-    }
-    catch(error){
-      return error;
-    }
-  }
-
+  /*
+     responseType: 'json',
+        headers: new HttpHeaders({
+          'Ocp-Apim-Subscription-Key': '2dc510c8323c494c843d86bb74f3d07a',
+          'Authorization': 'Basic bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+        })
+  */
 
   public setToken(tkn: any): void {
     sessionStorage.setItem('token', tkn);

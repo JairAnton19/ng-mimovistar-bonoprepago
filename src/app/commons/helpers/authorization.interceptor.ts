@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 
 export class AuthorizationInterceptor implements HttpInterceptor {
 
-  dev:string = 'bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz'
-  cert:string= 'bWltb3Zpc3RhcnRlc3Q6UTQ5Y2tZUlZkS2NFWlk2SA=='
-  prod: string= 'bWltb3Zpc3RhcnByb2Q6SEJQQmZiQjl6QVZNRVo0Sg=='
+  dev:string = 'bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz' //'bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz'
+  cert:string= 'bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz' //'bWltb3Zpc3RhcnRlc3Q6UTQ5Y2tZUlZkS2NFWlk2SA=='
+  prod: string= 'bWltb3Zpc3RhcjpnR3V5Vzd2WFJnVmV1THBz' //'bWltb3Zpc3RhcnByb2Q6SEJQQmZiQjl6QVZNRVo0Sg=='
 
   constructor() {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -23,7 +23,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     request = request.clone({
       setHeaders: {
         'Authorization': `Basic ${this.prod}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     });
 
@@ -31,3 +31,9 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
+
+/*
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+*/
