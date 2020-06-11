@@ -67,7 +67,7 @@ export class BonoInitalComponent implements OnInit {
       this.originApp = sessionStorage.getItem('origenAppConst');
       this.phone = sessionStorage.getItem('phone');
       if(bonoList[0].lineType !== undefined || bonoList[0].lineType !== null){
-        this.emailField = this.originApp === 'app_novum' ? false : true;
+        this.emailField = this.originApp.toUpperCase() === 'APP_NOVUM' ? false : true;
       }
     }
     this.cargando = false;
@@ -85,7 +85,8 @@ export class BonoInitalComponent implements OnInit {
 
 
   public canjearBono(){
-    if(this.originApp === 'app_novum'){
+    console.log('entro función canjearbono ' + this.originApp);
+    if(this.originApp.toUpperCase() === 'APP_NOVUM'){
       this.cargando = true;
       const body = {
         bonoId: this.bonoId,
@@ -102,14 +103,16 @@ export class BonoInitalComponent implements OnInit {
             this.route.navigate(['/bono-okm']);
           } else {
             this.cargando = false;
+            console.log('error: '+ response.responseCode);
             this.router.navigate(['/bono-error'], { replaceUrl: true });
           }
         },
         (error: any) => {
           this.cargando = false;
+          console.log(error);
           this.router.navigate(['/bono-error'], { replaceUrl: true });
         });
-    }else if(this.originApp === 'app_hogar'){
+    }else if(this.originApp === 'APP_HOGAR'){
       var emailActual = ((document.getElementById('inputEmail') as HTMLInputElement).value);
       if(this.validateEmail(emailActual)){
         this.errorMessage = false;
@@ -122,8 +125,8 @@ export class BonoInitalComponent implements OnInit {
           responseTrackingCD: this.trackingCD,
           email: emailActual,
         };
-        console.log(body);//this.route.navigate(['/bono-okh']);
-        this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
+        console.log(body);this.route.navigate(['/bono-okh']);
+        /*this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
           async (response: any) => {
             if (response.responseCode === '0') {
               this.cargando = false;
@@ -136,7 +139,7 @@ export class BonoInitalComponent implements OnInit {
           (error: any) => {
             this.cargando = false;
             this.router.navigate(['/bono-error'], { replaceUrl: true });
-          });
+          });*/
       }else{
         this.errorMessage = true;
       }

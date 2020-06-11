@@ -125,7 +125,26 @@ export class InitialComponent implements OnInit {
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
           sessionStorage.setItem('phone', response.responseData.phone);
           sessionStorage.setItem('origenAppConst', response.responseData.originApp);
-          if(!isNullOrUndefined(response.responseData.lineType)){
+          if(!isNullOrUndefined(response.responseData.originApp)){
+            let originApp = response.responseData.originApp.toUpperCase();
+            let lineType = response.responseData.lineType.toUpperCase();
+            if(originApp === 'APP_NOVUM'){
+              if(lineType === 'PREPAID'){// continue prepaid flow
+                await this.validation(response);
+                this.cargando = false
+              }else{//continue postpaid
+                await this.validatePostpagoHogar(response);
+                this.cargando = false
+              }
+            }else if(originApp === 'APP_HOGAR'){//continue hogar  
+              await this.validatePostpagoHogar(response);
+              this.cargando = false
+            }else{// line type not found
+              this.router.navigate(['/notFound'], { replaceUrl: true });
+            }
+            
+          }
+          /*if(!isNullOrUndefined(response.responseData.lineType)){
             //response.responseData.lineType = 'postpaid';
             let lineType = response.responseData.lineType.toUpperCase();
             if(lineType === 'PREPAID'){ // continue prepaid flow
@@ -139,7 +158,7 @@ export class InitialComponent implements OnInit {
             else { // line type not found
               this.router.navigate(['/notFound'], { replaceUrl: true });
             }
-          }
+          }*/
           else {
             this.router.navigate(['/notFound'], { replaceUrl: true });
           }
@@ -184,27 +203,27 @@ export class InitialComponent implements OnInit {
       }
     }
     else if (response.responseCode === '1280') {/*No bono*/
-      console.log('No corresponde campaña');
+      console.log('No corresponde campaña '+ response.responseCode);
       return this.router.navigate(['/no-bono'], { replaceUrl: true });
     }
     else if (response.responseCode === '1209') {/*Vacio*/
-      console.log('El cliente no tiene campañas activas');
+      console.log('El cliente no tiene campañas activas '+ response.responseCode);
       return this.router.navigate(['/bono-end'], { replaceUrl: true });
     }
     else if (response.responseCode === '1284') {/*Deuda*/
-      console.log('No aplica por deuda vencida pendiente');
+      console.log('No aplica por deuda vencida pendiente '+ response.responseCode);
       return this.router.navigate(['/bono-debt'], { replaceUrl: true });
     }
     else if (response.responseCode === '1281') {/*Max-Bono*/
-      console.log('Producto con velocidad > 200mb');
+      console.log('Producto con velocidad > 200mb '+ response.responseCode);
       return this.router.navigate(['/bono-max'], { replaceUrl: true });
     }
     else if (response.responseCode === '1282') {/*facilidades tecnnicas*/
-      console.log('No corresponde por facilidad tecnica');
+      console.log('No corresponde por facilidad tecnica '+ response.responseCode);
       return this.router.navigate(['/bono-technical'], { replaceUrl: true });
     }
     else if (response.responseCode === '1283') {/*Con Bono*/
-      console.log('Ya cuenta con el beneficio');
+      console.log('Ya cuenta con el beneficio '+ response.responseCode);
       return this.router.navigate(['/bono-canjed'], { replaceUrl: true });
     }
     else {
