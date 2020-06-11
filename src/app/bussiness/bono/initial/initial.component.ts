@@ -56,6 +56,8 @@ export class InitialComponent implements OnInit {
     this.bonoSelected.id = this.listOfBonos[index].bonoId;
     this.bonoSelected.subscriberId = this.listOfBonos[index].subscriberId;
     this.bonoSelected.trackingCD = this.listOfBonos[index].trackingCD;
+    this.bonoSelected.lineType = this.listOfBonos[index].lineType;
+    this.bonoSelected.phone = sessionStorage.getItem('phone');
 
     for (let i = 0; i < this.listOfBonos.length; i++) {
       if (i === index) {
@@ -84,12 +86,12 @@ export class InitialComponent implements OnInit {
       this.cargando = true;
 
       const body = {
-        bonoId: this.bonoSelected.id,
-        subscriberId: this.bonoSelected.subscriberId,
+        bonoId: this.bonoSelected.id,        
         descripcion: this.bonoSelected.name,
+        lineType: this.bonoSelected.lineType,
+        phone: this.bonoSelected.phone,
         responseTrackingCD: this.bonoSelected.trackingCD,
-      };
-
+      };      
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
           if (response.responseCode === '0') {
@@ -97,9 +99,15 @@ export class InitialComponent implements OnInit {
             this.router.navigate(['/canje']);
           }
           else {
+            console.log('Response '+ response.responseCode);
             this.router.navigate(['/notFound'], { replaceUrl: true });
           }
-        });
+      },
+      (error: any) => {
+        this.cargando = false;
+        console.error('Response: '+ error);
+        this.router.navigate(['/notFound'], { replaceUrl: true });
+      });
     }
   }
 
@@ -127,7 +135,7 @@ export class InitialComponent implements OnInit {
           sessionStorage.setItem('origenAppConst', response.responseData.originApp);
           if(!isNullOrUndefined(response.responseData.originApp)){
             let originApp = response.responseData.originApp.toUpperCase();
-            let lineType = response.responseData.lineType.toUpperCase();
+            let lineType = response.responseData.lineType.toUpperCase();            
             if(originApp === 'APP_NOVUM'){
               if(lineType === 'PREPAID'){// continue prepaid flow
                 await this.validation(response);
@@ -140,6 +148,7 @@ export class InitialComponent implements OnInit {
               await this.validatePostpagoHogar(response);
               this.cargando = false
             }else{// line type not found
+              console.log('Response '+ response.responseCode);
               this.router.navigate(['/notFound'], { replaceUrl: true });
             }
             
@@ -160,10 +169,12 @@ export class InitialComponent implements OnInit {
             }
           }*/
           else {
+            console.log('Response '+ response.responseCode);
             this.router.navigate(['/notFound'], { replaceUrl: true });
           }
         },
         (error: any) => {
+          console.error('Response '+ error);
           this.router.navigate(['/notFound'], { replaceUrl: true });
         }
       )
@@ -203,30 +214,31 @@ export class InitialComponent implements OnInit {
       }
     }
     else if (response.responseCode === '1280') {/*No bono*/
-      console.log('No corresponde campaña '+ response.responseCode);
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/no-bono'], { replaceUrl: true });
     }
     else if (response.responseCode === '1209') {/*Vacio*/
-      console.log('El cliente no tiene campañas activas '+ response.responseCode);
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/bono-end'], { replaceUrl: true });
     }
     else if (response.responseCode === '1284') {/*Deuda*/
-      console.log('No aplica por deuda vencida pendiente '+ response.responseCode);
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/bono-debt'], { replaceUrl: true });
     }
     else if (response.responseCode === '1281') {/*Max-Bono*/
-      console.log('Producto con velocidad > 200mb '+ response.responseCode);
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/bono-max'], { replaceUrl: true });
     }
     else if (response.responseCode === '1282') {/*facilidades tecnnicas*/
-      console.log('No corresponde por facilidad tecnica '+ response.responseCode);
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/bono-technical'], { replaceUrl: true });
     }
     else if (response.responseCode === '1283') {/*Con Bono*/
-      console.log('Ya cuenta con el beneficio '+ response.responseCode);
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/bono-canjed'], { replaceUrl: true });
     }
     else {
+      console.log('Response '+ response.responseCode);
       return this.router.navigate(['/bono-error'], { replaceUrl: true });
     }
   }
@@ -243,6 +255,7 @@ export class InitialComponent implements OnInit {
           this.listOfBonos.push({
             bonoId: element.id,
             bonoPrepago: element.description,
+            phone: element.phone,
             type: element.type,
             selected: element.selected,
             subscriberId: response.responseData.subscriberId,
@@ -252,6 +265,7 @@ export class InitialComponent implements OnInit {
         });
       }
       else {
+        console.log('Response ' + response.responseCode);
         return this.router.navigate(['/bono-empty'], { replaceUrl: true });
       }
     }
@@ -263,7 +277,8 @@ export class InitialComponent implements OnInit {
       return this.router.navigate(['/bono-empty'], { replaceUrl: true });
     }
     else {
-     return this.router.navigate(['/notFound'], { replaceUrl: true });
+      console.log('Response ' + response.responseCode);
+      return this.router.navigate(['/notFound'], { replaceUrl: true });
     }
   }
 

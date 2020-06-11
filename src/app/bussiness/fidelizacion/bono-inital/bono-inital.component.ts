@@ -94,6 +94,7 @@ export class BonoInitalComponent implements OnInit {
         phone:this.phone,
         descripcion: this.listOfBonosPostpagoHogar[0].description,
         responseTrackingCD: this.trackingCD,
+        //email:'vanessa_kq@hotmail.com',
       };
       console.log(body);//this.route.navigate(['/bono-okm']);
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
@@ -103,13 +104,13 @@ export class BonoInitalComponent implements OnInit {
             this.route.navigate(['/bono-okm']);
           } else {
             this.cargando = false;
-            console.log('error: '+ response.responseCode);
+            console.log('Response: '+ response.responseCode);
             this.router.navigate(['/bono-error'], { replaceUrl: true });
           }
         },
         (error: any) => {
           this.cargando = false;
-          console.log(error);
+          console.error('Response: '+ error);
           this.router.navigate(['/bono-error'], { replaceUrl: true });
         });
     }else if(this.originApp === 'APP_HOGAR'){
@@ -125,21 +126,23 @@ export class BonoInitalComponent implements OnInit {
           responseTrackingCD: this.trackingCD,
           email: emailActual,
         };
-        console.log(body);this.route.navigate(['/bono-okh']);
-        /*this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
+        console.log(body)//;this.route.navigate(['/bono-okh']);
+        this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
           async (response: any) => {
             if (response.responseCode === '0') {
               this.cargando = false;
               this.route.navigate(['/bono-okh']);
             } else {
+              console.log('Response: '+ response.responseCode);
               this.cargando = false;
               this.router.navigate(['/bono-error'], { replaceUrl: true });
             }
           },
           (error: any) => {
+            console.error('Response: '+ error);
             this.cargando = false;
             this.router.navigate(['/bono-error'], { replaceUrl: true });
-          });*/
+          });
       }else{
         this.errorMessage = true;
       }
