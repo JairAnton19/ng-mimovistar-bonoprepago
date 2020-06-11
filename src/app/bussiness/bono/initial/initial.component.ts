@@ -109,12 +109,12 @@ export class InitialComponent implements OnInit {
   }
 
   async peticionPost() {
-    const getParams = this.globalService.getParams(['jwt'])
+    const getParams = this.globalService.getParams(['jwt']);
 
     if (getParams.value) {
-      this.globalService.getUrlNovum(getParams.response.params.jwt)
-      const urlJwt = window.location.href
-      this.globalService.setUrlJwt(urlJwt)
+      this.globalService.getUrlNovum(getParams.response.params.jwt);
+      const urlJwt = window.location.href;
+      this.globalService.setUrlJwt(urlJwt);
 
       const body = {
         encryptedToken: getParams.response.params.jwt
@@ -122,18 +122,18 @@ export class InitialComponent implements OnInit {
 
       await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {
-          sessionStorage.setItem('urlCallBack', response.responseData.callbackURL)
-
+          sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
+          sessionStorage.setItem('phone', response.responseData.phone);
+          sessionStorage.setItem('origenAppConst', response.responseData.originApp);
           if(!isNullOrUndefined(response.responseData.lineType)){
-            response.responseData.lineType = 'Postpaid'
-            let lineType = response.responseData.lineType.toUpperCase()
-
+            //response.responseData.lineType = 'postpaid';
+            let lineType = response.responseData.lineType.toUpperCase();
             if(lineType === 'PREPAID'){ // continue prepaid flow
-              await this.validation(response)
+              await this.validation(response);
               this.cargando = false
             }
-            else if(lineType === 'POSTPAID' || lineType === 'CONTROL' || lineType === 'HOGAR'){ //continue postpaid and hogar
-              await this.validatePostpagoHogar(response)
+            else if(lineType === 'POSTPAID' || lineType === 'CONTROL' || lineType === 'HOGAR'){ //continue postpaid and hogar              
+              await this.validatePostpagoHogar(response);
               this.cargando = false
             }
             else { // line type not found
@@ -160,7 +160,7 @@ export class InitialComponent implements OnInit {
     {
       if(response.responseData.bonoList.length > 0)
       {
-        this.subscriberIdPostpagoHogar = response.responseData.subscriberId
+        this.subscriberIdPostpagoHogar = response.responseData.subscriberId;
 
         await response.responseData.bonoList.forEach((element) => {
           this.listOfBonosPostpagoHogar.push({
@@ -218,10 +218,8 @@ export class InitialComponent implements OnInit {
     {
       if (response.responseData.bonoList.length > 0)
       {
-        this.globalService.setToken(getParams.response.params.jwt)
-        sessionStorage.setItem('phone', response.responseData.phone)
-        this.subscriberId = response.responseData.subscriberId
-
+        this.globalService.setToken(getParams.response.params.jwt);
+        this.subscriberId = response.responseData.subscriberId;
         response.responseData.bonoList.forEach((element) => {
           this.listOfBonos.push({
             bonoId: element.id,

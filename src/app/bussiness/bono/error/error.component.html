@@ -1,9 +1,6 @@
 <div class="initial-container">
     <div class="gift-container">
-      <img
-        src="assets/images/icons/error.png"
-        alt="movistar-error"
-      />
+        <img src="assets/images/icons/error.png" alt="movistar-error" />
     </div>
     <div class="gift-container">
         <label>¡Ups! Algo salió mal</label>
@@ -14,7 +11,7 @@
 </div>
 
 <div class="align-bottom" *ngIf="callbackUrl">
-    <div [ngClass]="buttonClases()" (click)="backHome()">
-        <label >{{platform == "android" ? "VOLVER A MI LÍNEA":"Volver a mi línea"}}</label>
+    <div [ngClass]="buttonClases()" (click)="backHome()" *ngIf="origen">
+        <label>{{platform == "android" ? "VOLVER A MI LÍNEA":"Volver a mi línea"}}</label>
     </div>
 </div>

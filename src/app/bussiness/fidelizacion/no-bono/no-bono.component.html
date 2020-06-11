@@ -12,7 +12,7 @@
     </div>
     <div class="tdp-first-detail">
         <label class="tdp-text-detail"></label>
-        <div [ngClass]="buttonClases()" (click)="backHome()">
+        <div [ngClass]="buttonClases()" (click)="backHome()" *ngIf="origen">
             <label>{{platform == "android" ? "VOLVER A MI LINEA":"VOLVER A MI LINEA"}}</label>
         </div>
     </div>

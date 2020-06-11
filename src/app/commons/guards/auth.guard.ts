@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authService: GlobalService) { }
   canActivate() {
-    if (this.authService.getToken()) {
+    /*if (this.authService.getToken()) {
       return true;
     } else {
       this.router.navigate(['/recarga-error'], { replaceUrl: true } );
       return false;
-    }
+    }*/return true;
   }
 }

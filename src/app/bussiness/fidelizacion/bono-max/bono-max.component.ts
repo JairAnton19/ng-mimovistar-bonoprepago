@@ -8,10 +8,21 @@ import { Title } from '@angular/platform-browser';
 })
 export class BonoMaxComponent implements OnInit {
   platform = null;
+  originApp: string = null;
+  origen = true;
   constructor(private titleService: Title) { }
 
   ngOnInit() {
     this.titleService.setTitle( 'Bono Fidelización' );
+    this.loadBono(sessionStorage.getItem('origenAppConst'));
+  }
+  async loadBono(originApp){
+    console.log(originApp);
+    if(originApp === 'app_hogar'){
+      this.origen = false;
+    } else {
+      this.origen = true;
+    }
   }
   public backHome() {
     const url = sessionStorage.getItem('urlCallBack');

@@ -10,13 +10,22 @@ import { Title } from '@angular/platform-browser';
 export class BonoCanjedComponent implements OnInit {
 
   platform = null;
-
+  originApp: string = null;
+  origen = true;
   constructor(private route: Router, private titleService: Title) { }
 
   ngOnInit() {
     this.titleService.setTitle( 'Bono Fidelización' );
+    this.loadBono(sessionStorage.getItem('origenAppConst'));
   }
-
+  async loadBono(originApp){
+    console.log(originApp);
+    if(originApp === 'app_hogar'){
+      this.origen = false;
+    } else {
+      this.origen = true;
+    }
+  }
   public backHome() {
     const url = sessionStorage.getItem('urlCallBack');
     window.location.href = url;

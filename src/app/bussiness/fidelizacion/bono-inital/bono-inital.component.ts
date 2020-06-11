@@ -30,6 +30,7 @@ export class BonoInitalComponent implements OnInit {
   timeBono: string = null;
   dateBono: string = null;
   typeBono: string = null;
+  originApp: string = null;
   emailField = false;
 
   constructor(private route: Router, private globalService: GlobalService, private titleService: Title, private router: Router) {
@@ -38,20 +39,22 @@ export class BonoInitalComponent implements OnInit {
 
   async ngOnInit(){
     this.listOfBonosPostpagoHogar = this.globalService.getBonoListPostpagoHogar();
+    console.log(sessionStorage.getItem('origenAppConst'));
     console.log('listOfBonosPostpagoHogar initial');
     console.log(this.listOfBonosPostpagoHogar);
     await this.loadBono(this.listOfBonosPostpagoHogar);
     this.titleService.setTitle( 'Bono Fidelización' );
+    
   }
 
 
   async loadBono(bonoList){
     if(bonoList.length > 0){
       if(bonoList[0].detail !== null ){
-      this.bonoGB = bonoList[0].detail.quantity;
-      this.descriptionBono = bonoList[0].detail.descriptionaditional;
-      this.timeBono = bonoList[0].detail.duration;
-      this.dateBono = bonoList[0].detail.expiration;
+      this.bonoGB = bonoList[0].detail.detailQuantity;
+      this.descriptionBono = bonoList[0].detail.detailDescription;
+      this.timeBono = bonoList[0].detail.detailDuration;
+      this.dateBono = bonoList[0].detail.detailExpiration;
       }else{
         this.description = bonoList[0].description;
       }      
@@ -60,9 +63,11 @@ export class BonoInitalComponent implements OnInit {
       this.subscriberId = bonoList[0].subscriberId;
       this.bonoId = bonoList[0].bonoId;
       this.trackingCD = bonoList[0].trackingCD;
-
+        
+      this.originApp = sessionStorage.getItem('origenAppConst');
+      this.phone = sessionStorage.getItem('phone');
       if(bonoList[0].lineType !== undefined || bonoList[0].lineType !== null){
-        this.emailField = bonoList[0].lineType.toUpperCase() === 'POSTPAGO' ? false : true;
+        this.emailField = this.originApp === 'app_novum' ? false : true;
       }
     }
     this.cargando = false;
@@ -80,16 +85,16 @@ export class BonoInitalComponent implements OnInit {
 
 
   public canjearBono(){
-    if(this.typeBono.toUpperCase() === 'POSTPAGO'){
+    if(this.originApp === 'app_novum'){
       this.cargando = true;
       const body = {
         bonoId: this.bonoId,
         lineType:this.typeBono,
-        subscriberId: this.subscriberId,
+        phone:this.phone,
         descripcion: this.listOfBonosPostpagoHogar[0].description,
         responseTrackingCD: this.trackingCD,
       };
-      console.log(body);
+      console.log(body);//this.route.navigate(['/bono-okm']);
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
           if (response.responseCode === '0') {
@@ -104,21 +109,20 @@ export class BonoInitalComponent implements OnInit {
           this.cargando = false;
           this.router.navigate(['/bono-error'], { replaceUrl: true });
         });
-    }else if(this.typeBono.toUpperCase() === 'HOGAR'){
-      console.log("entrohogar");
-      var emailActual = ((document.getElementById('inputEmail') as HTMLInputElement).value);      
+    }else if(this.originApp === 'app_hogar'){
+      var emailActual = ((document.getElementById('inputEmail') as HTMLInputElement).value);
       if(this.validateEmail(emailActual)){
         this.errorMessage = false;
         this.cargando = true;
         const body = {
           bonoId: this.bonoId,
           lineType:this.typeBono,
-          subscriberId: this.subscriberId,
+          phone:this.phone,
           descripcion: this.listOfBonosPostpagoHogar[0].description,
           responseTrackingCD: this.trackingCD,
           email: emailActual,
         };
-        console.log(body);
+        console.log(body);//this.route.navigate(['/bono-okh']);
         this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
           async (response: any) => {
             if (response.responseCode === '0') {

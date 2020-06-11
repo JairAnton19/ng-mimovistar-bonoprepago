@@ -13,7 +13,7 @@
         <div [ngClass]="buttonClases()" (click)="backHome()">
             <label>{{platform == "android" ? "VOLVER A INTENTAR":"VOLVER A INTENTAR"}}</label>
         </div>
-        <div [ngClass]="buttonClases()" class="btn-receipts" (click)="backHome()">
+        <div [ngClass]="buttonClases()" class="btn-receipts" (click)="backHomeApp()" *ngIf="origen">
             <label>{{platform == "android" ? "VOLVER A MI LÍNEA":"VOLVER A MI LÍNEA"}}</label>
         </div>
     </div>
