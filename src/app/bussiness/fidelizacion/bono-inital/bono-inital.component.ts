@@ -43,7 +43,7 @@ export class BonoInitalComponent implements OnInit {
     console.log('listOfBonosPostpagoHogar initial');
     console.log(this.listOfBonosPostpagoHogar);
     await this.loadBono(this.listOfBonosPostpagoHogar);
-    this.titleService.setTitle( 'Bono Fidelización' );
+    this.titleService.setTitle( 'Beneficios Movistar' );
     
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bono-error',
@@ -9,9 +10,10 @@ export class BonoErrorComponent implements OnInit {
   platform = null;
   originApp: string = null;
   origen = true;
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle( 'Beneficios Movistar' );
     this.loadBono(sessionStorage.getItem('origenAppConst'));
   }
   async loadBono(originApp){

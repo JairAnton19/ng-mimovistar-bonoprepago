@@ -13,7 +13,7 @@ export class BonoMaxComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit() {
-    this.titleService.setTitle( 'Bono Fidelización' );
+    this.titleService.setTitle( 'Beneficios Movistar' );
     this.loadBono(sessionStorage.getItem('origenAppConst'));
   }
   async loadBono(originApp){
