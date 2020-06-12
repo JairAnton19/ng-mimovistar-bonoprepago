@@ -18,7 +18,7 @@ export class NoBonoComponent implements OnInit {
     this.loadBono(sessionStorage.getItem('origenAppConst'));
   }
   async loadBono(originApp){
-    console.log(originApp);
+    //console.log(originApp);
     if(originApp === 'app_hogar'){
       this.origen = false;
     } else {

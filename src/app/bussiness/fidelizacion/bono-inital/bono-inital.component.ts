@@ -39,9 +39,9 @@ export class BonoInitalComponent implements OnInit {
 
   async ngOnInit(){
     this.listOfBonosPostpagoHogar = this.globalService.getBonoListPostpagoHogar();
-    console.log(sessionStorage.getItem('origenAppConst'));
-    console.log('listOfBonosPostpagoHogar initial');
-    console.log(this.listOfBonosPostpagoHogar);
+    //console.log(sessionStorage.getItem('origenAppConst'));
+    //console.log('listOfBonosPostpagoHogar initial');
+    //console.log(this.listOfBonosPostpagoHogar);
     await this.loadBono(this.listOfBonosPostpagoHogar);
     this.titleService.setTitle( 'Beneficios Movistar' );
     
@@ -85,7 +85,7 @@ export class BonoInitalComponent implements OnInit {
 
 
   public canjearBono(){
-    console.log('entro función canjearbono ' + this.originApp);
+   // console.log('entro función canjearbono ' + this.originApp);
     if(this.originApp.toUpperCase() === 'APP_NOVUM'){
       this.cargando = true;
       const body = {
@@ -94,9 +94,10 @@ export class BonoInitalComponent implements OnInit {
         phone:this.phone,
         descripcion: this.listOfBonosPostpagoHogar[0].description,
         responseTrackingCD: this.trackingCD,
+        subscriberId: this.subscriberId,
         //email:'vanessa_kq@hotmail.com',
       };
-      console.log(body);//this.route.navigate(['/bono-okm']);
+      //console.log(body);//this.route.navigate(['/bono-okm']);
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
           if (response.responseCode === '0') {
@@ -125,8 +126,9 @@ export class BonoInitalComponent implements OnInit {
           descripcion: this.listOfBonosPostpagoHogar[0].description,
           responseTrackingCD: this.trackingCD,
           email: emailActual,
+          subscriberId: this.subscriberId,
         };
-        console.log(body)//;this.route.navigate(['/bono-okh']);
+        //console.log(body)//;this.route.navigate(['/bono-okh']);
         this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
           async (response: any) => {
             if (response.responseCode === '0') {

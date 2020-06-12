@@ -19,7 +19,7 @@ export class BonoCanjedComponent implements OnInit {
     this.loadBono(sessionStorage.getItem('origenAppConst'));
   }
   async loadBono(originApp){
-    console.log(originApp);
+    //console.log(originApp);
     if(originApp === 'app_hogar'){
       this.origen = false;
     } else {

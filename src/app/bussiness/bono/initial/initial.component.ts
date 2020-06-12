@@ -86,12 +86,13 @@ export class InitialComponent implements OnInit {
       this.cargando = true;
 
       const body = {
-        bonoId: this.bonoSelected.id,        
+        bonoId: this.bonoSelected.id,
         descripcion: this.bonoSelected.name,
         lineType: this.bonoSelected.lineType,
         phone: this.bonoSelected.phone,
         responseTrackingCD: this.bonoSelected.trackingCD,
-      };      
+        subscriberId: this.bonoSelected.subscriberId,
+      };   //console.log(body);
       this.globalService.globlalPost(`${CONSTANTS.endPointCanjearBono}`, body).subscribe(
         async (response: any) => {
           if (response.responseCode === '0') {
@@ -130,6 +131,7 @@ export class InitialComponent implements OnInit {
 
       await this.globalService.globlalPost(`${CONSTANTS.endPointBonosHome}`, body).subscribe(
         async (response: any) => {
+          //console.log(response);
           sessionStorage.setItem('urlCallBack', response.responseData.callbackURL);
           sessionStorage.setItem('phone', response.responseData.phone);
           sessionStorage.setItem('origenAppConst', response.responseData.originApp);

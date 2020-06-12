@@ -26,7 +26,7 @@ export class ErrorComponent implements OnInit {
     this.loadBono(this.originApp);
   }
   async loadBono(originApp){
-    console.log(originApp);
+    //console.log(originApp);
     if(originApp === 'app_hogar'){
       this.origen = false;
     } else if(originApp === 'app_novum'){
